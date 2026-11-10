@@ -390,12 +390,15 @@
 <text x="1640.0" y="720.0" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#111" text-anchor="middle" font-weight="bold">DAD-GUEST</text>
 <text x="1640.0" y="732.0" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#444" text-anchor="middle">VLAN 60 GUEST</text>
 <text x="1640.0" y="744.0" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#444" text-anchor="middle">10.30.140.0/24</text>
-<text x="860.0" y="28.0" font-family="Helvetica, Arial, sans-serif" font-size="17" fill="#1f2d3d" text-anchor="middle" font-weight="bold">Lab A (EVE-NG) -- physical topology, interfaces and link subnets</text>
-<rect x="1108.4" y="782.5" width="213.2" height="75.0" rx="2" fill="#ffffff" fill-opacity="0.93" stroke="#9aa7b5" stroke-width="0.8"/>
-<text x="1215.0" y="793.5" font-family="Helvetica, Arial, sans-serif" font-size="10" fill="#222" text-anchor="middle">Out-of-band management (not drawn):</text>
-<text x="1215.0" y="805.5" font-family="Helvetica, Arial, sans-serif" font-size="10" fill="#222" text-anchor="middle">Gi0/0 of every node -&gt; EVE-NG Cloud0</text>
-<text x="1215.0" y="817.5" font-family="Helvetica, Arial, sans-serif" font-size="10" fill="#222" text-anchor="middle">172.16.99.0/24, automation host .1</text>
-<text x="1215.0" y="829.5" font-family="Helvetica, Arial, sans-serif" font-size="10" fill="#222" text-anchor="middle"></text>
-<text x="1215.0" y="841.5" font-family="Helvetica, Arial, sans-serif" font-size="10" fill="#222" text-anchor="middle">Overlay tunnels: see routing diagram.</text>
-<text x="1215.0" y="853.5" font-family="Helvetica, Arial, sans-serif" font-size="10" fill="#222" text-anchor="middle">vIOS: set 6 NICs (uses Gi0/0-Gi0/4)</text>
+<text x="860.0" y="28.0" font-family="Helvetica, Arial, sans-serif" font-size="17" fill="#1f2d3d" text-anchor="middle" font-weight="bold">EVE-NG topology (campus + WAN) -- physical layout, interfaces and link subnets</text>
+<rect x="1108.4" y="764.5" width="213.2" height="111.0" rx="2" fill="#ffffff" fill-opacity="0.93" stroke="#9aa7b5" stroke-width="0.8"/>
+<text x="1215.0" y="775.5" font-family="Helvetica, Arial, sans-serif" font-size="10" fill="#222" text-anchor="middle">Out-of-band management (not drawn):</text>
+<text x="1215.0" y="787.5" font-family="Helvetica, Arial, sans-serif" font-size="10" fill="#222" text-anchor="middle">Gi0/0 of every node -&gt; EVE-NG Cloud0</text>
+<text x="1215.0" y="799.5" font-family="Helvetica, Arial, sans-serif" font-size="10" fill="#222" text-anchor="middle">172.16.99.0/24, automation host .1</text>
+<text x="1215.0" y="811.5" font-family="Helvetica, Arial, sans-serif" font-size="10" fill="#222" text-anchor="middle"></text>
+<text x="1215.0" y="823.5" font-family="Helvetica, Arial, sans-serif" font-size="10" fill="#222" text-anchor="middle">Overlay tunnels: see routing diagram.</text>
+<text x="1215.0" y="835.5" font-family="Helvetica, Arial, sans-serif" font-size="10" fill="#222" text-anchor="middle">vIOS: set 6 NICs (uses Gi0/0-Gi0/4)</text>
+<text x="1215.0" y="847.5" font-family="Helvetica, Arial, sans-serif" font-size="10" fill="#222" text-anchor="middle"></text>
+<text x="1215.0" y="859.5" font-family="Helvetica, Arial, sans-serif" font-size="10" fill="#222" text-anchor="middle">DC fabric: HCM-CORE1/2 Gi1/2 -&gt;</text>
+<text x="1215.0" y="871.5" font-family="Helvetica, Arial, sans-serif" font-size="10" fill="#222" text-anchor="middle">DC-LEAF1/2 Eth5 (see DC diagram)</text>
 </svg>

@@ -24,6 +24,7 @@ Examples
   python3 tvi_auto.py --task provision --site HAN       # one site only
   python3 tvi_auto.py --task all --role core access     # switches only
   python3 tvi_auto.py --task telemetry
+  python3 tvi_auto.py --task backup --lab B             # DC fabric (vEOS) only
 """
 from __future__ import annotations
 
@@ -147,7 +148,7 @@ def vlan_payload(dev: Device, vlans: dict) -> list[dict]:
 
 def build_commands(dev: Device, baseline: dict, vlans: dict) -> list[str]:
     if dev.device_type != "cisco_ios":
-        return []                          # Lab B (EOS) is backup/telemetry only
+        return []                          # DC fabric (EOS) is backup/telemetry only
     cmds: list[str] = []
     cmds += baseline.get("aaa", [])
     if dev.role not in baseline.get("ntp_exclude_roles", []):
@@ -240,6 +241,8 @@ TELEMETRY_CMDS = {
     "stp": "show spanning-tree summary",
     "tunnels": "show interfaces description | include Tu",
     "ipsec": "show crypto ikev2 sa",
+    "evpn": "show bgp evpn summary",
+    "vtep": "show vxlan vtep",
 }
 ROLE_TELEMETRY = {
     "edge": ["ospf", "bgp", "tunnels", "ipsec"] ,
@@ -247,6 +250,8 @@ ROLE_TELEMETRY = {
     "access": ["stp"],
     "isp": ["bgp"],
     "server": [],
+    "spine": ["evpn"],
+    "leaf": ["evpn", "vtep"],
 }
 
 
@@ -269,6 +274,10 @@ def collect_telemetry(conn, dev: Device, res: Result) -> None:
         summary["po_bundled_members"] = count(r"\(P\)", raw["lacp"])
     if "tunnels" in raw:
         summary["tunnels_up"] = count(r"^Tu\d+\s+up\s+up", raw["tunnels"])
+    if "evpn" in raw:
+        summary["evpn_established"] = count(r"\bEstab", raw["evpn"])
+    if "vtep" in raw:
+        summary["remote_vteps"] = count(r"^\d+\.\d+\.\d+\.\d+", raw["vtep"])
     if "ipsec" in raw:
         summary["ikev2_ready"] = count(r"\bREADY\b", raw["ipsec"])
     res.telemetry = {"summary": summary, "raw": raw}
@@ -353,7 +362,8 @@ def main(argv=None) -> int:
     ap.add_argument("--site", nargs="*", help="HCM HAN DAD WAN")
     ap.add_argument("--role", nargs="*", help="edge core access server isp spine leaf")
     ap.add_argument("--hosts", nargs="*", help="explicit hostnames")
-    ap.add_argument("--lab", nargs="*", default=["A"], help="A (campus/WAN, default) and/or B (DC fabric)")
+    ap.add_argument("--lab", nargs="*", default=["A", "B"],
+                    help="A = campus/WAN nodes, B = DC-fabric nodes (default: both)")
     ap.add_argument("--workers", type=int, default=4, help="parallel SSH sessions")
     ap.add_argument("--timeout", type=int, default=20)
     ap.add_argument("--dry-run", action="store_true", help="print the payload per device, no SSH")

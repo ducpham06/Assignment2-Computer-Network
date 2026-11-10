@@ -1,4 +1,4 @@
-# DC-H3 -- Lab B host on DC-LEAF2 Ethernet4 (VLAN 120)
+# DC-H3 -- DC fabric host on DC-LEAF2 Ethernet4 (VLAN 120)
 set pcname DC-H3
 ip 10.10.129.13/24 10.10.129.1
 save

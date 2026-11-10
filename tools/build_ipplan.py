@@ -117,7 +117,7 @@ sheet(wb, "Deployed Subnets",
       ["Site", "VLAN", "Name", "IPv4 subnet", "Mask", "HSRP VIP", "Gateway A (.2)", "Gateway B (.3)",
        "HSRP active", "IPv6 /64 (VIP fe80::1)", "Addressing", "ACL"],
       rows, [7, 7, 17, 16, 15, 13, 24, 24, 13, 26, 24, 26],
-      note="Subnets configured in Lab A = first /24 of each pool. HSRPv2 VIP .1 (IPv4) / FE80::1 (IPv6).")
+      note="Subnets configured in the lab = first /24 of each pool. HSRPv2 VIP .1 (IPv4) / FE80::1 (IPv6).")
 
 # ---- 4. IPv6 hierarchy
 rows = [["ENT", "2001:db8:a000::/40", "Enterprise allocation (256 x /48)", ""],
@@ -148,14 +148,14 @@ rows = []
 for n, d in sot.DEVICES.items():
     lo6 = sot.lo0_v6(n) if d.get("lo0") and d["lab"] == "A" and d["role"] not in ("isp",) else "-"
     rows.append([d["site"], n, d["platform"], d["role"], d.get("lo0", "-"), lo6, d["mgmt"],
-                 d.get("svi99", d.get("ip", "-")), f"Lab {d['lab']}", sot.RAM_MB[d["platform"]]])
+                 d.get("svi99", d.get("ip", "-")), "DC fabric" if d["lab"] == "B" else "Campus/WAN", sot.RAM_MB[d["platform"]]])
 ws, r0 = sheet(wb, "Loopbacks & Mgmt",
                ["Site", "Device", "Image", "Role", "Loopback0", "Loopback0 IPv6", "OOB mgmt (Gi0/0)",
-                "In-band / host IP", "Lab", "RAM (MB)"],
-               rows, [7, 13, 9, 9, 16, 26, 17, 17, 7, 10])
+                "In-band / host IP", "Part", "RAM (MB)"],
+               rows, [7, 13, 9, 9, 16, 26, 17, 17, 12, 10])
 last = r0 + len(rows)
-ws.cell(last + 1, 8, "Lab A RAM (MB)").font = Font(name=FONT, bold=True)
-ws.cell(last + 1, 10, f'=SUMIF(I{r0 + 1}:I{last},"Lab A",J{r0 + 1}:J{last})').font = Font(name=FONT, bold=True)
+ws.cell(last + 1, 8, "Total node RAM (MB)").font = Font(name=FONT, bold=True)
+ws.cell(last + 1, 10, f'=SUM(J{r0 + 1}:J{last})').font = Font(name=FONT, bold=True)
 
 wb.save(os.path.join(OUT, "TVI_IP_Plan.xlsx"))
 
@@ -169,7 +169,7 @@ md += ["", "## IPv4 VLSM pools (2030 sizing)", "", "| Site | VLAN | Function | P
        "|---|---|---|---|---|---|"]
 for site, v, p, need, note in sot.POOLS:
     md.append(f"| {site} | {v} | {vname(v)} | {p} | {ip.ip_network(p).num_addresses - 2:,} | {need or '-'} |")
-md += ["", "## Deployed subnets (Lab A)", "", "| Site | VLAN | Name | IPv4 | VIP | IPv6 |", "|---|---|---|---|---|---|"]
+md += ["", "## Deployed subnets (lab)", "", "| Site | VLAN | Name | IPv4 | VIP | IPv6 |", "|---|---|---|---|---|---|"]
 for site, subs in sot.SUBNETS.items():
     for s in subs:
         md.append(f"| {site} | {s['vlan']} | {sot.VLANS[s['vlan']]} | {s['v4']} | {sot.nth(s['v4'], 1)} | {s['v6'] or '-'} |")

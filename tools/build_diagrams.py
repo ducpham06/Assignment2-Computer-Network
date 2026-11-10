@@ -111,7 +111,7 @@ def logical():
 # =========================================================================== 2. Lab A physical
 def physical():
     s = Scene(1720, 1030)
-    s.text(860, 28, "Lab A (EVE-NG) -- physical topology, interfaces and link subnets", 17, "#1f2d3d", True, "middle")
+    s.text(860, 28, "EVE-NG topology (campus + WAN) -- physical layout, interfaces and link subnets", 17, "#1f2d3d", True, "middle")
     s.group(560, 50, 600, 160, "Provider cloud (outside TVI)", "#f4f5f7", "#9aa7b5", sub="ISP-A AS 65100 (203.0.113.0/24) | ISP-B AS 65200 (198.51.100.0/24)")
     s.node("ISP-A", "router", 700, 135, "ISP-A", ["SaaS 192.0.2.10, DNS 192.0.2.53"], label_pos="below")
     s.node("ISP-B", "router", 1020, 135, "ISP-B", ["Cloud-B 198.51.100.200"], label_pos="below")
@@ -165,7 +165,7 @@ def physical():
         s.link(sw, ep, "#888", 1.2, la=pif, la_t=0.4)
     s.text(1215, 820, "Out-of-band management (not drawn):\nGi0/0 of every node -> EVE-NG Cloud0\n"
            "172.16.99.0/24, automation host .1\n\nOverlay tunnels: see routing diagram.\n"
-           "vIOS: set 6 NICs (uses Gi0/0-Gi0/4)", 10, "#222", box="#ffffff")
+           "vIOS: set 6 NICs (uses Gi0/0-Gi0/4)\n\nDC fabric: HCM-CORE1/2 Gi1/2 ->\nDC-LEAF1/2 Eth5 (see DC diagram)", 10, "#222", box="#ffffff")
     return s
 
 
@@ -262,25 +262,34 @@ def hcm_detail():
 
 # =========================================================================== 5. DC fabric
 def dc():
-    s = Scene(1200, 760)
-    s.text(600, 30, "Lab B -- HQ data-centre fabric: OSPF underlay, iBGP EVPN overlay, VXLAN data plane", 16, "#1f2d3d", True, "middle")
-    s.group(60, 55, 1080, 200, "Spine layer -- EVPN route reflectors (AS 65011)", "#eef4fb", "#7a9cc6")
-    s.group(60, 290, 1080, 440, "Leaf layer -- VTEPs with distributed anycast gateway (VRF TENANT-PROD, L3VNI 50001)", "#eef7ea", "#7fb069")
-    s.node("DC-SPINE1", "l3switch", 380, 150, "DC-SPINE1", ["Lo0 10.10.191.1"], label_pos="left")
-    s.node("DC-SPINE2", "l3switch", 820, 150, "DC-SPINE2 (optional)", ["Lo0 10.10.191.2"], label_pos="right")
-    s.node("DC-LEAF1", "l3switch", 380, 420, "DC-LEAF1", ["Lo0 10.10.191.11", "VTEP Lo1 10.10.191.21"], label_pos="left")
-    s.node("DC-LEAF2", "l3switch", 820, 420, "DC-LEAF2", ["Lo0 10.10.191.12", "VTEP Lo1 10.10.191.22"], label_pos="right")
+    s = Scene(1400, 800)
+    s.text(700, 30, "HQ data-centre fabric: OSPF underlay, iBGP EVPN overlay, VXLAN data plane, border to the campus core",
+           16, "#1f2d3d", True, "middle")
+    s.group(240, 55, 920, 200, "Spine layer -- EVPN route reflectors (AS 65011)", "#eef4fb", "#7a9cc6")
+    s.group(240, 290, 920, 480, "Leaf layer -- VTEPs, anycast gateway (VRF TENANT-PROD, L3VNI 50001)", "#eef7ea", "#7fb069")
+    s.group(15, 290, 205, 300, "HQ campus", "#f4f5f7", "#9aa7b5", sub="OSPF 10 area 0")
+    s.group(1180, 290, 205, 300, "HQ campus", "#f4f5f7", "#9aa7b5", sub="OSPF 10 area 0")
+    s.node("DC-SPINE1", "l3switch", 450, 150, "DC-SPINE1", ["Lo0 10.10.191.1"], label_pos="left")
+    s.node("DC-SPINE2", "l3switch", 950, 150, "DC-SPINE2", ["Lo0 10.10.191.2"], label_pos="right")
+    s.node("DC-LEAF1", "l3switch", 450, 420, "DC-LEAF1", ["Lo0 10.10.191.11", "VTEP Lo1 10.10.191.21"])
+    s.node("DC-LEAF2", "l3switch", 950, 420, "DC-LEAF2", ["Lo0 10.10.191.12", "VTEP Lo1 10.10.191.22"])
+    s.node("HCM-CORE1", "l3switch", 117, 420, "HCM-CORE1")
+    s.node("HCM-CORE2", "l3switch", 1283, 420, "HCM-CORE2")
     for sp, sif, lf, lif, net in sot.DC["fabric_links"]:
         cross = (sp, lf) in (("DC-SPINE1", "DC-LEAF2"), ("DC-SPINE2", "DC-LEAF1"))
         s.link(sp, lf, "#333", 1.8, la=sif.replace("Ethernet", "Eth"), lb=lif.replace("Ethernet", "Eth"), mid=net, font=9,
                mid_t=0.3 if cross else 0.5)
+    for core, cif, lf, lif, net in sot.BORDER_LINKS:
+        s.link(core, lf, "#2e8540", 2.0, la=cif, lb=lif.replace("Ethernet", "Eth"), mid=f"{net}\nOSPF (VRF on leaf)", font=8.5,
+               la_t=0.18, lb_t=0.8)
     s.link("DC-LEAF1", "DC-LEAF2", "#7b3fa0", 2.2, "8 4", mid="VXLAN (UDP 4789)\nL2VNI 10110 / 10120, L3VNI 50001", font=9.5)
-    hosts = {"DC-H1": 260, "DC-H2": 700, "DC-H3": 940}
+    hosts = {"DC-H1": 300, "DC-H2": 720, "DC-H3": 1110}
     for lf, lif, h, vlan, hip in sot.DC["hosts"]:
-        s.node(h, "server", hosts[h], 620, h, [f"VLAN {vlan} {hip}", "GW 10.10.%d.1 (anycast)" % (128 if vlan == 110 else 129)])
-        s.link(lf, h, "#888", 1.3, la=lif.replace("Ethernet", "Eth"), la_t=0.3)
-    s.text(600, 520, "H1 <-> H2: same subnet across leaves (EVPN type-2, L2VNI 10110)\n"
-           "H1 <-> H3: routed between subnets (symmetric IRB via L3VNI 50001)", 10.5, "#222", box="#ffffff")
+        s.node(h, "server", hosts[h], 670, h, [f"VLAN {vlan} {hip}", "GW 10.10.%d.1 (anycast)" % (128 if vlan == 110 else 129)])
+        s.link(lf, h, "#888", 1.3, la=lif.replace("Ethernet", "Eth"), la_t=0.45)
+    s.text(620, 560, "H1 <-> H2: same subnet across leaves (EVPN type-2, L2VNI 10110)\n"
+           "H1 <-> H3: routed between subnets (symmetric IRB via L3VNI 50001)\n"
+           "H1 <-> campus/branches: leaf -> HCM core via OSPF in the tenant VRF", 10.5, "#222", box="#ffffff")
     return s
 
 

@@ -1,4 +1,4 @@
-# Verification test plan (Lab A)
+# Verification test plan
 
 Run top to bottom; each block depends on the one above. Paste every output into the matching
 **Evidence** box in the report (`report/main.tex`, Section 7) — screenshots must come from your own lab.
@@ -38,6 +38,16 @@ Run top to bottom; each block depends on the one above. Paste every output into 
 | T10 | HCM-EDG1 | `show crypto ikev2 sa` / `show crypto ipsec sa \| i encaps\|decaps` | 2 SAs READY, counters rising |
 | T11 | HCM-EDG1 | `show ip route bgp` | 10.20.0.0/16 via 10.0.0.2, 10.30.0.0/16 via 10.0.0.6, 0.0.0.0/0 via 203.0.113.1 |
 | T12 | HCM-CORE1 | `show ip route ospf` | `O*E2 0.0.0.0/0` and `O E2 10.20.0.0/16`, `10.30.0.0/16` via both edges |
+
+## Step 6b — DC fabric (EVPN-VXLAN) and border
+
+| ID | Device | Command | Pass if |
+|---|---|---|---|
+| T24 | DC-LEAF1 | `show bgp evpn summary` | 2 peers (both spines) Estab |
+| T24b | DC-LEAF1 | `show vxlan vtep` | remote VTEP 10.10.191.22 |
+| T24c | DC-H1 | `ping 10.10.128.12` / `ping 10.10.129.13` | success (L2VNI / L3VNI) |
+| T24d | DC-H1 | `ping <PC-HAN-ENG IP>` | success (leaf -> core -> overlay -> Hanoi) |
+| T24e | HCM-CORE1 | `show ip route ospf \| i 10.10.12` | 10.10.128.0/24 and 10.10.129.0/24 learned from the leaves |
 
 ## Step 7 — Security
 

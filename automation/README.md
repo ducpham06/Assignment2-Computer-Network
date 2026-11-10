@@ -32,12 +32,12 @@ read -s TVI_SSH_PASS && export TVI_SSH_PASS      # or leave unset and answer the
 
 ```bash
 python3 tvi_auto.py --dry-run                      # print the payload per device, no SSH
-python3 tvi_auto.py --task backup                  # snapshot all Lab A nodes
+python3 tvi_auto.py --task backup                  # snapshot every node (campus/WAN + DC fabric)
 python3 tvi_auto.py --task all                     # pre-backup -> push -> write mem -> post-backup -> diff -> verify
 python3 tvi_auto.py --task all --site HAN --role access
 python3 tvi_auto.py --task verify                  # VLAN compliance only
 python3 tvi_auto.py --task telemetry --role edge core
-python3 tvi_auto.py --task backup --lab B          # vEOS fabric (backup/telemetry only)
+python3 tvi_auto.py --task telemetry --lab B       # vEOS fabric: EVPN peers + VTEPs (vEOS is backup/telemetry only)
 ```
 
 Exit code is 1 if any device failed, so the script can run from cron/CI.

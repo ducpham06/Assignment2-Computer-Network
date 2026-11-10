@@ -47,7 +47,7 @@ Generated from `tools/sot.py`. The Excel workbook `TVI_IP_Plan.xlsx` has the sam
 | WAN | OVERLAY | OVERLAY | 10.0.0.0/24 | 254 | - |
 | WAN | ZTNA | ZTNA | 10.0.64.0/18 | 16,382 | - |
 
-## Deployed subnets (Lab A)
+## Deployed subnets (lab)
 
 | Site | VLAN | Name | IPv4 | VIP | IPv6 |
 |---|---|---|---|---|---|

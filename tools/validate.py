@@ -200,7 +200,7 @@ for d, c in C.items():
             if k in seen:
                 dup.append((k, seen[k], f"{d} {ifn}"))
             seen[k] = f"{d} {ifn}"
-check("No duplicate interface IP addresses (v4+v6) across Lab A", not dup, str(dup))
+check("No duplicate interface IP addresses (v4+v6) across the campus/WAN configs", not dup, str(dup))
 owner = {}
 for d, c in C.items():
     for ifn, I in c["ifs"].items():
@@ -387,14 +387,28 @@ for d, t in eos.items():
 vnis = {d: sorted(re.findall(r"vxlan vlan (\d+) vni (\d+)", t)) for d, t in eos.items() if "Vxlan1" in t}
 if len({str(v) for v in vnis.values()}) != 1:
     bad.append(("VNI map differs", vnis))
-check("Lab B: fabric /31s match, EVPN peers are real loopbacks, VLAN-VNI map identical on all leaves",
+check("DC fabric: fabric /31s match, EVPN peers are real loopbacks, VLAN-VNI map identical on all leaves",
       not bad, str(bad))
 
-# ---------------------------------------------------------------- 10. RAM budget
-ramA = sum(sot.RAM_MB[d["platform"]] for d in sot.DEVICES.values() if d["lab"] == "A")
-ramB = sum(sot.RAM_MB[d["platform"]] for d in sot.DEVICES.values() if d["lab"] == "B" and not d.get("optional"))
-check(f"RAM budget: Lab A = {ramA / 1024:.1f} GB, Lab B (1 spine) = {ramB / 1024:.1f} GB -- each fits a 12 GB host",
-      ramA <= 9 * 1024 and ramB <= 7 * 1024)
+# ---------------------------------------------------------------- 10. DC border
+bad = []
+for core, cif, leaf, lif, net in sot.BORDER_LINKS:
+    I = C[core]["ifs"].get(sot.full_if(cif))
+    m = re.search(rf"interface {lif}\n(?:   .*\n)*?   ip address (\S+)", eos[leaf])
+    vrf = re.search(rf"interface {lif}\n(?:   .*\n)*?   vrf (\S+)", eos[leaf])
+    if not I or not m or I["v4"].network != ip.ip_interface(m.group(1)).network:
+        bad.append((core, leaf, "subnet"))
+    elif I["ospf"] != sot.SITES["HCM"]["ospf"] or sot.full_if(cif) not in C[core]["no_passive"]["v4"]:
+        bad.append((core, "ospf"))
+    if not vrf or vrf.group(1) != sot.DC["vrf"] or f"router ospf 11 vrf {sot.DC['vrf']}" not in eos[leaf]:
+        bad.append((leaf, "vrf/ospf"))
+check("DC border: core and leaf share each /30, core runs OSPF 10 non-passive, leaf runs OSPF in the tenant VRF",
+      not bad, str(bad))
+
+# ---------------------------------------------------------------- 11. RAM budget
+ram = sum(sot.RAM_MB[d["platform"]] for d in sot.DEVICES.values())
+check(f"RAM budget: whole topology = {ram / 1024:.1f} GB of node RAM -- fits a 32 GB host with headroom",
+      ram <= 24 * 1024)
 
 # ---------------------------------------------------------------- report
 w = max(len(n) for n, _, _ in CHECKS)

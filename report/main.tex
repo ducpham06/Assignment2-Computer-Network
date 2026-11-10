@@ -111,7 +111,7 @@ This report presents a replacement architecture and a working virtual implementa
 \item \textbf{Programmable operations.} All configurations are generated from a single source-of-truth file, checked automatically before deployment, and maintained by a Python/Netmiko tool that backs up, provisions and audits every device, so that new VLANs or policies are rolled out consistently instead of by hand.
 \end{enumerate}
 
-The addressing plan reserves a summarisable /16 IPv4 block and a /48 IPv6 block per site and is sized for the 2030 targets of 10,000 users and more than 25,000 IoT endpoints without renumbering. Voice receives strict priority on every WAN link. The design was implemented in EVE-NG with Cisco vIOS/IOSvL2 (campus and WAN, \ramA\,GB of RAM) and Arista vEOS (data-centre EVPN-VXLAN fabric, \ramB\,GB), so that both labs fit the 12\,GB machines available to the team. Section~\ref{sec:testing} documents the verification and failover evidence collected from the running lab.
+The addressing plan reserves a summarisable /16 IPv4 block and a /48 IPv6 block per site and is sized for the 2030 targets of 10,000 users and more than 25,000 IoT endpoints without renumbering. Voice receives strict priority on every WAN link. The design was implemented as a single EVE-NG topology of 18 virtual network devices -- Cisco vIOS and IOSvL2 for the campus and WAN, Arista vEOS for the data-centre EVPN-VXLAN fabric -- which needs about \ramT\,GB of RAM and runs on the team's 14-core, 32\,GB host. Section~\ref{sec:testing} documents the verification and failover evidence collected from the running lab.
 
 % ======================================================================== 2
 \section{Requirement Analysis}
@@ -147,7 +147,7 @@ Guests: Internet only & Guest VLAN per site with ACL denying all RFC\,1918 space
 
 \subsection{Scope, assumptions and lab abstraction}
 
-The \emph{design} describes the production network. The \emph{implementation} reproduces every protocol the rubric requires at a reduced scale that a 12\,GB laptop can run. Table~\ref{tab:abstraction} states each abstraction explicitly so that the reader can judge what the lab proves.
+The \emph{design} describes the production network. The \emph{implementation} reproduces every protocol the rubric requires at a reduced scale (fewer access switches and endpoints) that a single 32\,GB host can run. Table~\ref{tab:abstraction} states each abstraction explicitly so that the reader can judge what the lab proves.
 
 \begin{table}[H]
 \centering\small
@@ -155,13 +155,13 @@ The \emph{design} describes the production network. The \emph{implementation} re
 \label{tab:abstraction}
 \begin{tabularx}{\linewidth}{@{}p{3.2cm}XX@{}}
 \toprule
-\textbf{Element} & \textbf{Production design} & \textbf{Lab A / Lab B implementation}\\
+\textbf{Element} & \textbf{Production design} & \textbf{Lab implementation}\\
 \midrule
 WAN transports & Business broadband (ISP-A) and MPLS/business fibre (ISP-B) & Two vIOS routers emulating the carriers (AS 65100/65200) with an inter-carrier peering\\
 SD-WAN & Commercial SD-WAN controller with application-aware routing & GRE-over-IPsec full mesh per transport, eBGP path selection, HSRP placement to split data and voice across transports\\
 HQ campus & Collapsed core (2 $\times$ L3 switches) and many access stacks & 2 $\times$ IOSvL2 core, 1 IOSvL2 access switch\\
 Branch campus & Two edge routers with a pair of distribution switches & Two vIOS edges as router-on-a-stick gateways (HSRP) and one access switch\\
-Data centre & EVPN-VXLAN spine-leaf, border leaves to the core & Separate Lab B: 1--2 vEOS spines, 2 vEOS leaves (RAM limit)\\
+Data centre & EVPN-VXLAN spine-leaf, border leaves to the core & 2 vEOS spines and 2 vEOS leaves; each leaf is also a border leaf with a routed link to one HQ core\\
 Services & DHCP/DNS/NTP servers, WLC cluster, NMS & One vIOS router acting as DHCP/DNS/NTP server and VoIP probe; WLC and ZTNA are design-only\\
 Endpoints & Thousands of users, phones, APs, IoT & VPCS hosts, one per VLAN\\
 Addressing & 10.0.0.0/8, global IPv6 /40 & Same plan; IPv6 documentation prefix 2001:db8::/32 (RFC 3849) and IPv4 TEST-NETs (RFC 5737) for the carriers\\
@@ -186,20 +186,20 @@ Figure~\ref{fig:logical} shows the target architecture. Each site is an autonomo
 
 \paragraph{Demarcation points.} The boundary of TVI's responsibility is the WAN interface \texttt{Gi0/1} of each edge router (labelled \emph{DEMARC} in Figure~\ref{fig:logical} and ``demarcation point'' in the interface descriptions). Everything on the carrier side of these six /30 links belongs to ISP-A or ISP-B; TVI controls only what it sends (nothing but IPsec, IKE and BGP towards the carriers) and what it accepts (a default route only). The SASE PoP is a second, logical demarcation: remote users never touch the TVI network directly, they reach individual applications through the provider's broker.
 
-\subsection{Physical lab topology (Lab A)}
+\subsection{Physical lab topology}
 
 Figure~\ref{fig:physical} is the topology built in EVE-NG, with every interface identifier and link subnet. The tables in Section~\ref{sec:ip} and the configuration files in \texttt{configs/labA/} are generated from the same data, so the labels in the figure match the devices exactly.
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=\linewidth]{figures/02-labA-physical.pdf}
-\caption{Lab A physical topology: interfaces, link subnets and VLAN placement}
+\caption{Campus and WAN part of the lab: interfaces, link subnets and VLAN placement}
 \label{fig:physical}
 \end{figure}
 
 \subsection{Lab inventory and resource budget}
 
-Table~\ref{tab:devices} lists every node with its image, loopback and out-of-band management address. All Cisco and Arista nodes connect their first interface (\texttt{Gi0/0}/\texttt{Management1}) to an EVE-NG \emph{Cloud0} network (172.16.99.0/24), which is how the automation host reaches them without depending on the production data plane. Lab A requires \ramA\,GB and Lab B \ramB\,GB of RAM, so each lab runs on its own on a 12\,GB host; they are demonstrated one after the other.
+Table~\ref{tab:devices} lists every node with its image, loopback and out-of-band management address. All Cisco and Arista nodes connect their first interface (\texttt{Gi0/0}/\texttt{Management1}) to an EVE-NG \emph{Cloud0} network (172.16.99.0/24), which is how the automation host reaches them without depending on the production data plane. The whole topology needs about \ramT\,GB of node RAM (\ramA\,GB for the campus and WAN, \ramB\,GB for the fabric) and runs as one EVE-NG lab on a 14-core, 32\,GB host, which leaves room for the EVE-NG VM itself; the \emph{Part} column distinguishes campus/WAN (C/W) and data-centre (DC) nodes. The data-centre part is drawn separately in Figure~\ref{fig:dc} and attaches to the HQ cores through \texttt{Gi1/2}.
 
 \begin{table}[H]
 \centering\scriptsize
@@ -207,7 +207,7 @@ Table~\ref{tab:devices} lists every node with its image, loopback and out-of-ban
 \label{tab:devices}
 \begin{tabularx}{\linewidth}{@{}l c l l l X l r@{}}
 \toprule
-\textbf{Node} & \textbf{Lab} & \textbf{Image} & \textbf{Role} & \textbf{Loopback0 / host IP} & \textbf{Loopback0 IPv6} & \textbf{OOB mgmt} & \textbf{MB}\\
+\textbf{Node} & \textbf{Part} & \textbf{Image} & \textbf{Role} & \textbf{Loopback0 / host IP} & \textbf{Loopback0 IPv6} & \textbf{OOB mgmt} & \textbf{MB}\\
 \midrule
 \tabin{generated/tab_devices.tex}
 \bottomrule
@@ -260,7 +260,7 @@ Table~\ref{tab:deployed} lists the subnets configured in the lab -- the first /2
 
 \begin{table}[H]
 \centering\scriptsize
-\caption{Deployed gateway subnets in Lab A}
+\caption{Deployed gateway subnets in the lab}
 \label{tab:deployed}
 \setlength{\tabcolsep}{3pt}
 \begin{tabularx}{\linewidth}{@{}l r l l l l l X@{}}
@@ -373,7 +373,7 @@ BGP keepalive/hold timers on the tunnels are reduced to 5/15\,s, bounding the de
 
 \paragraph{Interaction of underlay and overlay.} The underlay and the overlay interact at exactly two points, both on the edge routers. First, the overlay depends on the underlay for reachability of the iBGP loopbacks and on the carrier default route for the tunnel endpoints; because the tunnel destination is resolved only through the carrier default (and never through a route learned over a tunnel, which the prefix-lists exclude), recursive routing loops cannot occur. Second, the overlay feeds the underlay: HQ redistributes only remote-site summaries, and only eBGP-learned ones, into OSPF. If HCM-EDG1 loses its tunnels, its eBGP routes disappear, it stops redistributing them, and the cores immediately shift to HCM-EDG2 without any manual action.
 
-\subsection{Data-centre fabric: EVPN-VXLAN (Lab B)}
+\subsection{Data-centre fabric: EVPN-VXLAN}
 \label{sec:evpn}
 
 \begin{figure}[H]
@@ -385,7 +385,7 @@ BGP keepalive/hold timers on the tunnels are reduced to 5/15\,s, bounding the de
 
 The HQ data centre and the Hanoi AI lab require large east-west bandwidth and workload mobility, which a traditional Layer~2 design with spanning tree cannot provide at scale. A spine-leaf fabric gives every leaf an equal-cost path to every other leaf through any spine, and VXLAN extends Layer~2 segments over this routed fabric without spanning tree. EVPN (RFC~7432/8365) replaces flood-and-learn with a BGP control plane: leaves advertise MAC/IP bindings (route type 2) and subnets (type 5), which suppresses unnecessary flooding and supports multi-tenancy with VRFs.
 
-The fabric in Lab B (Figure~\ref{fig:dc}) uses OSPF on /31 point-to-point links as the underlay (matching the brief's OSPF-underlay/BGP-overlay model), iBGP EVPN with the spines as route reflectors, and a distributed anycast gateway (10.10.128.1 and 10.10.129.1 on every leaf). VLAN 110 and VLAN 120 map to L2VNIs 10110 and 10120; routing between them uses symmetric IRB through L3VNI 50001 in VRF TENANT-PROD. In production, a pair of border leaves would connect the fabric to the HQ cores and the fabric's VRF would be advertised into OSPF; this connection is omitted from the lab only because of the RAM budget.
+The fabric (Figure~\ref{fig:dc}) uses OSPF on /31 point-to-point links as the underlay (matching the brief's OSPF-underlay/BGP-overlay model), iBGP EVPN with the spines as route reflectors, and a distributed anycast gateway (10.10.128.1 and 10.10.129.1 on every leaf). VLAN 110 and VLAN 120 map to L2VNIs 10110 and 10120; routing between them uses symmetric IRB through L3VNI 50001 in VRF TENANT-PROD. The fabric is connected to the campus through its leaves: DC-LEAF1 and DC-LEAF2 each have a routed /30 to one HQ core (10.10.189.0/30 and 10.10.189.4/30), placed in VRF TENANT-PROD on the leaf side and running OSPF with the campus (process 10, area 0). The leaves advertise the tenant subnets into the campus, where the HQ edges already cover them with the 10.10.0.0/16 summary towards the branches, and they learn the campus routes and the default route in return. Because each leaf connects to a different core, the loss of one core or one border link leaves the data centre reachable through the other. In a larger fabric this role would move to a dedicated pair of border leaves.
 
 \lstinputlisting[caption={DC-LEAF1 -- VXLAN mapping and EVPN configuration}]{generated/cfg_evpn_leaf.txt}
 
@@ -562,6 +562,7 @@ T19 & 7 & Executive protection & \texttt{ping} PC-HCM-EXEC from PC-HAN-ENG, and 
 T20 & 7 & DHCP snooping / DAI & \texttt{show ip dhcp snooping binding}, \texttt{show ip arp inspection statistics} (DAD-ACC1) & Bindings for DHCP clients; DAI active on 30,40,50,60\\
 T21 & 7 & Zone-based firewall & \texttt{show policy-map type inspect zone-pair sessions} (HAN-EDG1) & Inspected sessions for T16 traffic\\
 T22 & 8 & Voice marking and LLQ & \texttt{show policy-map interface Gi0/1} (HCM-EDG1/2); \texttt{show ip sla statistics} (HCM-SRV1) & CM-WAN-VOICE packet counters increase; IP SLA OK with MOS reported\\
+T24 & 6 & DC fabric and border & \texttt{show bgp evpn summary}, \texttt{show vxlan vtep} (DC-LEAF1); \texttt{ping} DC-H1 $\rightarrow$ DC-H2, DC-H3, PC-HAN-ENG & 2 EVPN peers Estab, 1 remote VTEP; all three pings succeed\\
 T23 & 9 & Automation & \texttt{python3 tvi\_auto.py -{}-task all} & All nodes OK, backups and diff written, compliance PASS\\
 \bottomrule
 \end{longtable}}
@@ -578,6 +579,8 @@ T23 & 9 & Automation & \texttt{python3 tvi\_auto.py -{}-task all} & All nodes OK
 \evidence{OSPFv2/v3 adjacencies at HQ (T07)}{show ip ospf neighbor; show ipv6 ospf neighbor (HCM-CORE1)}
 \evidence{BGP sessions and IPsec SAs (T09, T10)}{show bgp ipv4 unicast summary; show crypto ikev2 sa (HCM-EDG1)}
 \evidence{Routing tables (T11, T12)}{show ip route bgp (HCM-EDG1); show ip route ospf (HCM-CORE1)}
+
+\evidence{EVPN-VXLAN fabric and border routing (T24)}{show bgp evpn summary; show vxlan vtep (DC-LEAF1); pings from DC-H1; show ip route ospf (HCM-CORE1)}
 
 \subsubsection*{End-to-end connectivity (T13--T16)}
 \evidence{Inter-site and branch-to-branch traceroute (T13, T14)}{trace from PC-HAN-ENG to PC-HCM-CORP and to PC-DAD-LOG}
@@ -624,7 +627,7 @@ F5 & Stop node HAN-EDG1 & PC-HAN-ENG $\rightarrow$ PC-HCM-CORP & HAN-EDG2 takes 
 \subsection{Building the lab}
 The detailed EVE-NG procedure is in \texttt{docs/eve-ng-build-guide.md}; the essential steps are:
 \begin{enumerate}
-\item Import the vIOS (\texttt{vios-adventerprisek9-m}) and IOSvL2 images, and the vEOS-lab image for Lab B. Set vIOS nodes to 512\,MB and \textbf{6 Ethernet interfaces}, IOSvL2 to 768\,MB with 4 interface groups, vEOS to 2048\,MB.
+\item Import the vIOS (\texttt{vios-adventerprisek9-m}) and IOSvL2 images, and the vEOS-lab image. Give the EVE-NG VM 24\,GB of RAM and 12 vCPUs with nested virtualisation enabled. Set vIOS nodes to 512\,MB and \textbf{6 Ethernet interfaces}, IOSvL2 to 768\,MB with 4 interface groups, vEOS to 2048\,MB.
 \item Create the nodes and links exactly as in Figure~\ref{fig:physical} (the cabling table in the guide lists every port), and connect Gi0/0 of every node to a \emph{Management (Cloud0)} network.
 \item Start the nodes in the order carriers, edges, cores, access switches, server, VPCS; on each, enter \texttt{configure terminal} and paste \texttt{configs/labA/<node>.cfg}; then \texttt{write memory}. On VPCS, paste \texttt{configs/vpcs/<node>.vpc}.
 \item On the EVE-NG host add \texttt{172.16.99.1/24} to \texttt{pnet0}, install the automation requirements and run \texttt{tvi\_auto.py}.
@@ -649,7 +652,7 @@ The detailed EVE-NG procedure is in \texttt{docs/eve-ng-build-guide.md}; the ess
 % ======================================================================== 9
 \section{Limitations and Future Work}
 
-The lab proves the routing, switching, security, QoS and automation design, but three elements remain design-only for resource reasons: the wireless controller, the SASE/ZTNA service and the border connection between the EVPN fabric and the campus. The SD-WAN overlay is emulated with standard protocols; a commercial controller would add application-aware path selection (for example, steering voice to the transport with the lowest measured jitter) and zero-touch provisioning. QoS marking takes place at the WAN edge because IOSvL2 lacks access-port MQC. Future work includes BFD for sub-second WAN failover, 802.1X with a RADIUS server for dynamic VLAN assignment, a second DHCP server with split scopes, and integrating the source of truth with a version-controlled CI pipeline that runs the validator on every change.
+The lab proves the routing, switching, security, QoS and automation design, but two elements remain design-only: the wireless controller, whose virtual appliance requires licensed images the course does not provide, and the SASE/ZTNA service, which is a cloud service rather than a device EVE-NG can run. The SD-WAN overlay is emulated with standard protocols; a commercial controller would add application-aware path selection (for example, steering voice to the transport with the lowest measured jitter) and zero-touch provisioning. QoS marking takes place at the WAN edge because IOSvL2 lacks access-port MQC. Future work includes BFD for sub-second WAN failover, 802.1X with a RADIUS server for dynamic VLAN assignment, a second DHCP server with split scopes, and integrating the source of truth with a version-controlled CI pipeline that runs the validator on every change.
 
 % ======================================================================== 10
 \section{Conclusion}
@@ -690,8 +693,8 @@ The proposed network replaces TVI's flat hub-and-spoke WAN with three autonomous
 \toprule
 \textbf{Path} & \textbf{Content}\\
 \midrule
-\texttt{configs/labA/*.cfg} & Configurations of the 14 Lab A nodes (paste-ready; exported startup-configs are added after the demo)\\
-\texttt{configs/labB/*.cfg} & Configurations of the 4 vEOS fabric nodes\\
+\texttt{configs/labA/*.cfg} & Configurations of the 14 campus/WAN nodes (paste-ready; exported startup-configs are added after the demo)\\
+\texttt{configs/labB/*.cfg} & Configurations of the 4 vEOS fabric nodes (spines, leaves with border links)\\
 \texttt{configs/vpcs/*.vpc} & VPCS host settings\\
 \texttt{automation/} & \texttt{tvi\_auto.py}, \texttt{inventory.yaml}, \texttt{vars/}, tests, \texttt{README.md}\\
 \texttt{ip-plan/} & \texttt{TVI\_IP\_Plan.xlsx} and \texttt{ip\_plan.md}\\
@@ -708,7 +711,7 @@ The proposed network replaces TVI's flat hub-and-spoke WAN with three autonomous
 \textbf{Time} & \textbf{Activity}\\
 \midrule
 0:00--2:00 & Architecture overview using Figures~\ref{fig:logical} and \ref{fig:routing}\\
-2:00--5:00 & Underlay and overlay state: T07, T09, T10, T11 on HCM-EDG1 and HCM-CORE1\\
+2:00--5:00 & Underlay and overlay state: T07, T09, T10, T11 on HCM-EDG1 and HCM-CORE1; EVPN state and a DC-H1 $\rightarrow$ Hanoi ping (T24)\\
 5:00--7:30 & End-to-end tests: T13, T14 (direct branch path), T16 (local breakout), T17--T19 (isolation)\\
 7:30--11:00 & Failover: continuous ping, stop HCM-CORE1 (F3), then shut the ISP-A link at Hanoi (F4); restore both\\
 11:00--13:30 & Automation: dry run, then \texttt{-{}-task all} on the switches; show backups, diff and log\\

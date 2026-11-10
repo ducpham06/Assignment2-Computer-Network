@@ -70,12 +70,13 @@ rows, ram = [], {"A": 0, "B": 0}
 img = {"vios": "vIOS", "viosl2": "IOSvL2", "veos": "vEOS-lab"}
 for n, d in sot.DEVICES.items():
     lo6 = sot.lo0_v6(n) if d["lab"] == "A" and d.get("lo0") and d["role"] != "isp" else "--"
-    rows.append(f"{tex(n)} & {d['lab']} & {img[d['platform']]} & {d['role']} & \\texttt{{{d.get('lo0', d.get('svi99', d.get('ip', '--')))}}} & "
+    rows.append(f"{tex(n)} & {'DC' if d['lab'] == 'B' else 'C/W'} & {img[d['platform']]} & {d['role']} & \\texttt{{{d.get('lo0', d.get('svi99', d.get('ip', '--')))}}} & "
                 f"\\texttt{{{lo6}}} & \\texttt{{{d['mgmt']}}} & {sot.RAM_MB[d['platform']]} \\\\")
     if not d.get("optional"):
         ram[d["lab"]] += sot.RAM_MB[d["platform"]]
 w("tab_devices.tex", "\n".join(rows))
-w("ram.tex", f"\\newcommand{{\\ramA}}{{{ram['A'] / 1024:.1f}}}\n\\newcommand{{\\ramB}}{{{ram['B'] / 1024:.1f}}}\n")
+w("ram.tex", f"\\newcommand{{\\ramA}}{{{ram['A'] / 1024:.1f}}}\n\\newcommand{{\\ramB}}{{{ram['B'] / 1024:.1f}}}\n"
+           f"\\newcommand{{\\ramT}}{{{(ram['A'] + ram['B']) / 1024:.1f}}}\n")
 
 # ---------------------------------------------------------------- config excerpts
 CFG = os.path.join(ROOT, "configs")
