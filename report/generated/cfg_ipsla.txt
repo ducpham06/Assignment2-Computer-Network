@@ -1,0 +1,6 @@
+ip sla 10
+ udp-jitter 10.20.255.1 16384 source-ip 10.10.43.10 codec g711ulaw
+  tos 184
+  tag VOIP-HCM-TO-HAN
+  frequency 30
+ip sla schedule 10 life forever start-time now

@@ -1,0 +1,35 @@
+# Day-1 baseline pushed by tvi_auto.py to every managed Cisco IOS node.
+# Edit here, not in the script.
+
+aaa:
+  - aaa new-model
+  - aaa authentication login default local
+  - aaa authorization exec default local
+  - aaa authentication enable default enable
+  - aaa session-id common
+
+ntp_servers:
+  - 10.10.43.10            # HCM-SRV1 (ntp master)
+ntp_exclude_roles:
+  - server                 # HCM-SRV1 is the NTP master itself
+
+syslog_hosts:
+  - 172.16.99.1            # automation / NMS station on the OOB network
+
+logging:
+  - logging buffered 64000 informational
+  - logging trap informational
+  - logging source-interface GigabitEthernet0/0
+
+hardening:
+  - service tcp-keepalives-in
+  - service tcp-keepalives-out
+  - login block-for 120 attempts 5 within 60
+  - login on-failure log
+  - login on-success log
+  - no ip http server
+  - no ip http secure-server
+
+banner: >
+  Unauthorized access to TVI Corporate Infrastructure is prohibited.
+  All sessions are logged and monitored.

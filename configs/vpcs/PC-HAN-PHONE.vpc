@@ -1,0 +1,5 @@
+# PC-HAN-PHONE -- VLAN 40 VOICE on HAN-ACC1 Gi1/1
+set pcname PC-HAN-PHONE
+ip dhcp
+ip auto
+save

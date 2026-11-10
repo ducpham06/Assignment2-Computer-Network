@@ -1,0 +1,18 @@
+ip dhcp snooping vlan 30,40,50,60
+no ip dhcp snooping information option
+ip dhcp snooping
+ip arp inspection vlan 30,40,50,60
+!
+interface GigabitEthernet1/1
+ description Access -> PC-DAD-IOT eth0 (VLAN 50 IOT_DEVICES)
+ switchport mode access
+ switchport access vlan 50
+ switchport nonegotiate
+ switchport port-security maximum 2
+ switchport port-security violation restrict
+ switchport port-security mac-address sticky
+ switchport port-security
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+ ip dhcp snooping limit rate 15
+ no shutdown

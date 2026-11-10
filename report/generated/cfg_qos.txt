@@ -1,0 +1,26 @@
+policy-map PM-LAN-MARK-IN
+ description Trust boundary: re-mark everything entering the WAN edge
+ class CM-IN-VOICE
+  set dscp ef
+ class CM-IN-SIGNALING
+  set dscp cs3
+ class CM-IN-CRITICAL
+  set dscp af31
+ class class-default
+  set dscp default
+!
+policy-map PM-WAN-QUEUING
+ class CM-WAN-VOICE
+  priority percent 30
+ class CM-WAN-SIGNALING
+  bandwidth percent 5
+ class CM-WAN-CRITICAL
+  bandwidth percent 25
+ class class-default
+  fair-queue
+!
+policy-map PM-WAN-SHAPE
+ description Shape to the 50 Mbps contracted WAN rate, then LLQ
+ class class-default
+  shape average 50000000
+  service-policy PM-WAN-QUEUING

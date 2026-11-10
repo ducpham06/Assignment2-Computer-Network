@@ -1,0 +1,4 @@
+# DC-H2 -- Lab B host on DC-LEAF2 Ethernet3 (VLAN 110)
+set pcname DC-H2
+ip 10.10.128.12/24 10.10.128.1
+save

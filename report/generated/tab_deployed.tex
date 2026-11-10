@@ -1,0 +1,16 @@
+HCM & 10 & EXEC\_FINANCE & \texttt{10.10.32.0/24} & \texttt{2001:db8:a010:1001::/64} & HCM-CORE1 & relay & ACL-EXEC-PROTECT \\
+HCM & 12 & CORP\_STAFF & \texttt{10.10.0.0/24} & \texttt{2001:db8:a010:1201::/64} & HCM-CORE1 & relay & -- \\
+HCM & 40 & VOICE & \texttt{10.10.16.0/24} & \texttt{2001:db8:a010:4001::/64} & HCM-CORE1 & relay & -- \\
+HCM & 60 & GUEST & \texttt{10.10.36.0/24} & \texttt{IPv4 only} & HCM-CORE2 & relay & ACL-GUEST-IN \\
+HCM & 70 & WLAN\_AP & \texttt{10.10.42.0/24} & \texttt{2001:db8:a010:7001::/64} & HCM-CORE2 & relay & -- \\
+HCM & 80 & SERVERS & \texttt{10.10.43.0/24} & \texttt{2001:db8:a010:8001::/64} & HCM-CORE1 & static & -- \\
+HCM & 99 & MANAGEMENT & \texttt{10.10.44.0/24} & \texttt{2001:db8:a010:9901::/64} & HCM-CORE2 & static & -- \\
+HAN & 20 & RND\_ENGINEERING & \texttt{10.20.0.0/24} & \texttt{2001:db8:a020:2001::/64} & HAN-EDG1 & relay & -- \\
+HAN & 40 & VOICE & \texttt{10.20.16.0/24} & \texttt{2001:db8:a020:4001::/64} & HAN-EDG2 & relay & -- \\
+HAN & 60 & GUEST & \texttt{10.20.24.0/24} & \texttt{IPv4 only} & HAN-EDG2 & relay & ACL-GUEST-IN \\
+HAN & 99 & MANAGEMENT & \texttt{10.20.31.0/24} & \texttt{2001:db8:a020:9901::/64} & HAN-EDG1 & static & -- \\
+DAD & 30 & LOGISTICS\_OPS & \texttt{10.30.128.0/24} & \texttt{2001:db8:a030:3001::/64} & DAD-EDG1 & relay & -- \\
+DAD & 40 & VOICE & \texttt{10.30.136.0/24} & \texttt{2001:db8:a030:4001::/64} & DAD-EDG2 & relay & -- \\
+DAD & 50 & IOT\_DEVICES & \texttt{10.30.0.0/24} & \texttt{2001:db8:a030:5001::/64} & DAD-EDG2 & relay & ACL-IOT-IN \\
+DAD & 60 & GUEST & \texttt{10.30.140.0/24} & \texttt{IPv4 only} & DAD-EDG2 & relay & ACL-GUEST-IN \\
+DAD & 99 & MANAGEMENT & \texttt{10.30.144.0/24} & \texttt{2001:db8:a030:9901::/64} & DAD-EDG1 & static & -- \\

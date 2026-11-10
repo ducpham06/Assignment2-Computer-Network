@@ -1,0 +1,5 @@
+# PC-DAD-IOT -- VLAN 50 IOT_DEVICES on DAD-ACC1 Gi1/1
+set pcname PC-DAD-IOT
+ip dhcp
+ip auto
+save

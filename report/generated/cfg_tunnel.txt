@@ -1,0 +1,13 @@
+interface Tunnel11
+ description Overlay plane A -> HAN-EDG1 Tunnel11 (GRE/IPsec)
+ bandwidth 50000
+ ip address 10.0.0.1 255.255.255.252
+ ip mtu 1400
+ ip tcp adjust-mss 1360
+ ipv6 address 2001:db8:a000:11::1/64
+ ipv6 mtu 1400
+ zone-member security INSIDE
+ qos pre-classify
+ tunnel source GigabitEthernet0/1
+ tunnel destination 203.0.113.6
+ tunnel protection ipsec profile TVI-IPSEC-PROFILE

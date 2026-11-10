@@ -1,0 +1,5 @@
+spanning-tree mode rapid-pvst
+spanning-tree extend system-id
+spanning-tree loopguard default
+spanning-tree vlan 10,12,40,80,900 priority 24576
+spanning-tree vlan 60,70,99 priority 28672

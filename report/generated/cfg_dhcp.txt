@@ -1,0 +1,14 @@
+ip dhcp pool HAN-V20-RND_ENGINEERING
+ network 10.20.0.0 255.255.255.0
+ default-router 10.20.0.1
+ dns-server 10.10.43.10
+ domain-name tvi.lab
+ lease 1
+!
+ip dhcp pool HCM-V70-WLAN_AP
+ network 10.10.42.0 255.255.255.0
+ default-router 10.10.42.1
+ dns-server 10.10.43.10
+ domain-name tvi.lab
+ lease 1
+ option 43 hex f104.0a0a.2b14

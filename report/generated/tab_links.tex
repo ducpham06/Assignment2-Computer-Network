@@ -1,0 +1,20 @@
+HCM-EDG1 Gi0/2 & HCM-CORE1 Gi1/0 & \texttt{10.10.254.0/30} & \texttt{2001:db8:a010:fe01::/64} \\
+HCM-EDG1 Gi0/3 & HCM-CORE2 Gi1/0 & \texttt{10.10.254.4/30} & \texttt{2001:db8:a010:fe02::/64} \\
+HCM-EDG2 Gi0/2 & HCM-CORE1 Gi1/1 & \texttt{10.10.254.8/30} & \texttt{2001:db8:a010:fe03::/64} \\
+HCM-EDG2 Gi0/3 & HCM-CORE2 Gi1/1 & \texttt{10.10.254.12/30} & \texttt{2001:db8:a010:fe04::/64} \\
+HCM-EDG1 Gi0/4 & HCM-EDG2 Gi0/4 & \texttt{10.10.254.16/30} & \texttt{2001:db8:a010:fe05::/64} \\
+HCM-CORE1 Vlan900 & HCM-CORE2 Vlan900 & \texttt{10.10.254.20/30} & \texttt{2001:db8:a010:fe06::/64} \\
+HAN-EDG1 Gi0/3 & HAN-EDG2 Gi0/3 & \texttt{10.20.254.0/30} & \texttt{2001:db8:a020:fe01::/64} \\
+DAD-EDG1 Gi0/3 & DAD-EDG2 Gi0/3 & \texttt{10.30.254.0/30} & \texttt{2001:db8:a030:fe01::/64} \\
+ISP-A Gi0/1 & HCM-EDG1 Gi0/1 & \texttt{203.0.113.0/30} & -- \\
+ISP-A Gi0/2 & HAN-EDG1 Gi0/1 & \texttt{203.0.113.4/30} & -- \\
+ISP-A Gi0/3 & DAD-EDG1 Gi0/1 & \texttt{203.0.113.8/30} & -- \\
+ISP-B Gi0/1 & HCM-EDG2 Gi0/1 & \texttt{198.51.100.0/30} & -- \\
+ISP-B Gi0/2 & HAN-EDG2 Gi0/1 & \texttt{198.51.100.4/30} & -- \\
+ISP-B Gi0/3 & DAD-EDG2 Gi0/1 & \texttt{198.51.100.8/30} & -- \\
+HCM-EDG1 Tu11 & HAN-EDG1 Tu11 (plane A) & \texttt{10.0.0.0/30} & \texttt{2001:db8:a000:11::/64} \\
+HCM-EDG1 Tu12 & DAD-EDG1 Tu12 (plane A) & \texttt{10.0.0.4/30} & \texttt{2001:db8:a000:12::/64} \\
+HAN-EDG1 Tu13 & DAD-EDG1 Tu13 (plane A) & \texttt{10.0.0.16/30} & \texttt{2001:db8:a000:13::/64} \\
+HCM-EDG2 Tu21 & HAN-EDG2 Tu21 (plane B) & \texttt{10.0.0.8/30} & \texttt{2001:db8:a000:21::/64} \\
+HCM-EDG2 Tu22 & DAD-EDG2 Tu22 (plane B) & \texttt{10.0.0.12/30} & \texttt{2001:db8:a000:22::/64} \\
+HAN-EDG2 Tu23 & DAD-EDG2 Tu23 (plane B) & \texttt{10.0.0.20/30} & \texttt{2001:db8:a000:23::/64} \\

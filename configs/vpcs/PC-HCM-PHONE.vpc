@@ -1,0 +1,5 @@
+# PC-HCM-PHONE -- VLAN 40 VOICE on HCM-ACC1 Gi1/3
+set pcname PC-HCM-PHONE
+ip dhcp
+ip auto
+save

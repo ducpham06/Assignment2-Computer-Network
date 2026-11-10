@@ -1,0 +1,4 @@
+# PC-HAN-GUEST -- VLAN 60 GUEST on HAN-ACC1 Gi1/2
+set pcname PC-HAN-GUEST
+ip dhcp
+save

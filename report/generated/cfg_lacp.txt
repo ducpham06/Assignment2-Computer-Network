@@ -1,0 +1,17 @@
+interface Port-channel1
+ description LACP L2 trunk -> HCM-CORE2 Po1
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ switchport trunk native vlan 999
+ switchport trunk allowed vlan 10,12,40,60,70,80,99,900
+ switchport nonegotiate
+!
+interface GigabitEthernet0/1
+ description Po1 member -> HCM-CORE2 Gi0/1
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ switchport trunk native vlan 999
+ switchport trunk allowed vlan 10,12,40,60,70,80,99,900
+ switchport nonegotiate
+ channel-group 1 mode active
+ no shutdown

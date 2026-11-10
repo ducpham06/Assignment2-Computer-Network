@@ -1,0 +1,4 @@
+# PC-DAD-GUEST -- VLAN 60 GUEST on DAD-ACC1 Gi1/3
+set pcname PC-DAD-GUEST
+ip dhcp
+save

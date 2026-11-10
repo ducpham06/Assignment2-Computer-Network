@@ -1,0 +1,18 @@
+router ospf 10
+ router-id 10.10.255.1
+ auto-cost reference-bandwidth 100000
+ passive-interface default
+ no passive-interface GigabitEthernet0/2
+ no passive-interface GigabitEthernet0/3
+ no passive-interface GigabitEthernet0/4
+ default-information originate
+ redistribute bgp 65010 subnets route-map RM-BGP-TO-OSPF
+!
+ipv6 router ospf 10
+ router-id 10.10.255.1
+ auto-cost reference-bandwidth 100000
+ passive-interface default
+ no passive-interface GigabitEthernet0/2
+ no passive-interface GigabitEthernet0/3
+ no passive-interface GigabitEthernet0/4
+ redistribute bgp 65010 route-map RM6-BGP-TO-OSPF

@@ -1,0 +1,4 @@
+# PC-HCM-GUEST -- VLAN 60 GUEST on HCM-ACC1 Gi1/2
+set pcname PC-HCM-GUEST
+ip dhcp
+save

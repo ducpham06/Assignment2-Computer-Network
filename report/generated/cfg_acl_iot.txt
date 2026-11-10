@@ -1,0 +1,11 @@
+ip access-list extended ACL-IOT-IN
+ remark IoT: DHCP/DNS/NTP + MQTT to the IoT platform at HQ + cloud IoT hub. Nothing else.
+ permit udp any eq bootpc any eq bootps
+ permit udp any eq bootpc host 10.10.43.10 eq bootps
+ permit udp any host 10.10.43.10 eq domain
+ permit udp any host 10.10.43.10 eq ntp
+ permit tcp any 10.10.43.0 0.0.0.255 eq 1883
+ permit tcp any 10.10.43.0 0.0.0.255 eq 8883
+ permit icmp any 10.10.43.0 0.0.0.255
+ permit tcp any host 192.0.2.10 eq 8883
+ deny   ip any any log

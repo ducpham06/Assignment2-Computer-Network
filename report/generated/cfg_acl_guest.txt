@@ -1,0 +1,8 @@
+ip access-list extended ACL-GUEST-IN
+ remark GUEST: DHCP + Internet only. No RFC1918 destination, no infrastructure.
+ permit udp any eq bootpc any eq bootps
+ permit udp any eq bootpc host 10.10.43.10 eq bootps
+ deny   ip any 10.0.0.0 0.255.255.255 log
+ deny   ip any 172.16.0.0 0.15.255.255 log
+ deny   ip any 192.168.0.0 0.0.255.255 log
+ permit ip any any

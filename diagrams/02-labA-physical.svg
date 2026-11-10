@@ -1,0 +1,401 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1720" height="1030" viewBox="0 0 1720 1030">
+<rect width="1720" height="1030" fill="#ffffff"/>
+<rect x="560" y="50" width="600" height="160" rx="10" fill="#f4f5f7" stroke="#9aa7b5" stroke-width="1.5" stroke-dasharray="6 4"/>
+<text x="570.0" y="68.0" font-family="Helvetica, Arial, sans-serif" font-size="12.5" fill="#1f2d3d" text-anchor="start" font-weight="bold">Provider cloud (outside TVI)</text>
+<text x="570.0" y="82.0" font-family="Helvetica, Arial, sans-serif" font-size="9.5" fill="#3d4f63" text-anchor="start" font-style="italic">ISP-A AS 65100 (203.0.113.0/24) | ISP-B AS 65200 (198.51.100.0/24)</text>
+<rect x="20" y="262" width="470" height="508" rx="10" fill="#eef7ea" stroke="#7fb069" stroke-width="1.5" stroke-dasharray="6 4"/>
+<text x="30.0" y="280.0" font-family="Helvetica, Arial, sans-serif" font-size="12.5" fill="#1f2d3d" text-anchor="start" font-weight="bold">HAN -- Hanoi R&amp;D</text>
+<text x="30.0" y="294.0" font-family="Helvetica, Arial, sans-serif" font-size="9.5" fill="#3d4f63" text-anchor="start" font-style="italic">OSPF 20 | AS 65020 | router-on-a-stick + HSRP</text>
+<rect x="520" y="262" width="680" height="758" rx="10" fill="#eef4fb" stroke="#7a9cc6" stroke-width="1.5" stroke-dasharray="6 4"/>
+<text x="530.0" y="280.0" font-family="Helvetica, Arial, sans-serif" font-size="12.5" fill="#1f2d3d" text-anchor="start" font-weight="bold">HCM -- Ho Chi Minh City HQ</text>
+<text x="530.0" y="294.0" font-family="Helvetica, Arial, sans-serif" font-size="9.5" fill="#3d4f63" text-anchor="start" font-style="italic">OSPF 10 | AS 65010 | collapsed core + HSRP + LACP</text>
+<rect x="1230" y="262" width="470" height="508" rx="10" fill="#fdf1e7" stroke="#e0a46c" stroke-width="1.5" stroke-dasharray="6 4"/>
+<text x="1240.0" y="280.0" font-family="Helvetica, Arial, sans-serif" font-size="12.5" fill="#1f2d3d" text-anchor="start" font-weight="bold">DAD -- Da Nang Logistics</text>
+<text x="1240.0" y="294.0" font-family="Helvetica, Arial, sans-serif" font-size="9.5" fill="#3d4f63" text-anchor="start" font-style="italic">OSPF 30 | AS 65030 | router-on-a-stick + HSRP</text>
+<polyline points="700.0,135.0 1020.0,135.0" fill="none" stroke="#6b7785" stroke-width="1.6"/>
+<polyline points="700.0,135.0 700.0,330.0" fill="none" stroke="#1f77b4" stroke-width="1.8"/>
+<polyline points="700.0,135.0 120.0,330.0" fill="none" stroke="#1f77b4" stroke-width="1.8"/>
+<polyline points="700.0,135.0 1330.0,330.0" fill="none" stroke="#1f77b4" stroke-width="1.8"/>
+<polyline points="1020.0,135.0 1020.0,330.0" fill="none" stroke="#d9711c" stroke-width="1.8"/>
+<polyline points="1020.0,135.0 390.0,330.0" fill="none" stroke="#d9711c" stroke-width="1.8"/>
+<polyline points="1020.0,135.0 1600.0,330.0" fill="none" stroke="#d9711c" stroke-width="1.8"/>
+<polyline points="700.0,330.0 700.0,540.0" fill="none" stroke="#333" stroke-width="1.6"/>
+<polyline points="700.0,330.0 1020.0,540.0" fill="none" stroke="#333" stroke-width="1.6"/>
+<polyline points="1020.0,330.0 700.0,540.0" fill="none" stroke="#333" stroke-width="1.6"/>
+<polyline points="1020.0,330.0 1020.0,540.0" fill="none" stroke="#333" stroke-width="1.6"/>
+<polyline points="700.0,330.0 1020.0,330.0" fill="none" stroke="#333" stroke-width="1.6"/>
+<polyline points="120.0,330.0 390.0,330.0" fill="none" stroke="#333" stroke-width="1.6"/>
+<polyline points="1330.0,330.0 1600.0,330.0" fill="none" stroke="#333" stroke-width="1.6"/>
+<line x1="700.0" y1="543.5" x2="1020.0" y2="543.5" stroke="#333" stroke-width="2"/>
+<line x1="700.0" y1="536.5" x2="1020.0" y2="536.5" stroke="#333" stroke-width="2"/>
+<polyline points="700.0,540.0 860.0,740.0" fill="none" stroke="#2e8b8b" stroke-width="1.6"/>
+<polyline points="1020.0,540.0 860.0,740.0" fill="none" stroke="#2e8b8b" stroke-width="1.6"/>
+<polyline points="120.0,330.0 255.0,520.0" fill="none" stroke="#2e8b8b" stroke-width="1.6"/>
+<polyline points="390.0,330.0 255.0,520.0" fill="none" stroke="#2e8b8b" stroke-width="1.6"/>
+<polyline points="1330.0,330.0 1465.0,520.0" fill="none" stroke="#2e8b8b" stroke-width="1.6"/>
+<polyline points="1600.0,330.0 1465.0,520.0" fill="none" stroke="#2e8b8b" stroke-width="1.6"/>
+<polyline points="860.0,740.0 590.0,930.0" fill="none" stroke="#888" stroke-width="1.2"/>
+<polyline points="860.0,740.0 730.0,930.0" fill="none" stroke="#888" stroke-width="1.2"/>
+<polyline points="860.0,740.0 870.0,930.0" fill="none" stroke="#888" stroke-width="1.2"/>
+<polyline points="860.0,740.0 1010.0,930.0" fill="none" stroke="#888" stroke-width="1.2"/>
+<polyline points="860.0,740.0 1135.0,930.0" fill="none" stroke="#888" stroke-width="1.2"/>
+<polyline points="255.0,520.0 90.0,690.0" fill="none" stroke="#888" stroke-width="1.2"/>
+<polyline points="255.0,520.0 255.0,690.0" fill="none" stroke="#888" stroke-width="1.2"/>
+<polyline points="255.0,520.0 420.0,690.0" fill="none" stroke="#888" stroke-width="1.2"/>
+<polyline points="1465.0,520.0 1290.0,690.0" fill="none" stroke="#888" stroke-width="1.2"/>
+<polyline points="1465.0,520.0 1405.0,690.0" fill="none" stroke="#888" stroke-width="1.2"/>
+<polyline points="1465.0,520.0 1520.0,690.0" fill="none" stroke="#888" stroke-width="1.2"/>
+<polyline points="1465.0,520.0 1640.0,690.0" fill="none" stroke="#888" stroke-width="1.2"/>
+<ellipse cx="700" cy="135" rx="23.0" ry="16.0" fill="#1d5d9b" stroke="#fff" stroke-width="1.5"/>
+<line x1="703" y1="135" x2="716.0" y2="135.0" stroke="#fff" stroke-width="2.2"/>
+<line x1="697" y1="135" x2="684.0" y2="135.0" stroke="#fff" stroke-width="2.2"/>
+<line x1="700" y1="137" x2="700.0" y2="146.0" stroke="#fff" stroke-width="2.2"/>
+<line x1="700" y1="133" x2="700.0" y2="124.0" stroke="#fff" stroke-width="2.2"/>
+<circle cx="700" cy="135" r="2.5" fill="#fff"/>
+<ellipse cx="1020" cy="135" rx="23.0" ry="16.0" fill="#1d5d9b" stroke="#fff" stroke-width="1.5"/>
+<line x1="1023" y1="135" x2="1036.0" y2="135.0" stroke="#fff" stroke-width="2.2"/>
+<line x1="1017" y1="135" x2="1004.0" y2="135.0" stroke="#fff" stroke-width="2.2"/>
+<line x1="1020" y1="137" x2="1020.0" y2="146.0" stroke="#fff" stroke-width="2.2"/>
+<line x1="1020" y1="133" x2="1020.0" y2="124.0" stroke="#fff" stroke-width="2.2"/>
+<circle cx="1020" cy="135" r="2.5" fill="#fff"/>
+<ellipse cx="120" cy="330" rx="23.0" ry="16.0" fill="#1d5d9b" stroke="#fff" stroke-width="1.5"/>
+<line x1="123" y1="330" x2="136.0" y2="330.0" stroke="#fff" stroke-width="2.2"/>
+<line x1="117" y1="330" x2="104.0" y2="330.0" stroke="#fff" stroke-width="2.2"/>
+<line x1="120" y1="332" x2="120.0" y2="341.0" stroke="#fff" stroke-width="2.2"/>
+<line x1="120" y1="328" x2="120.0" y2="319.0" stroke="#fff" stroke-width="2.2"/>
+<circle cx="120" cy="330" r="2.5" fill="#fff"/>
+<ellipse cx="390" cy="330" rx="23.0" ry="16.0" fill="#1d5d9b" stroke="#fff" stroke-width="1.5"/>
+<line x1="393" y1="330" x2="406.0" y2="330.0" stroke="#fff" stroke-width="2.2"/>
+<line x1="387" y1="330" x2="374.0" y2="330.0" stroke="#fff" stroke-width="2.2"/>
+<line x1="390" y1="332" x2="390.0" y2="341.0" stroke="#fff" stroke-width="2.2"/>
+<line x1="390" y1="328" x2="390.0" y2="319.0" stroke="#fff" stroke-width="2.2"/>
+<circle cx="390" cy="330" r="2.5" fill="#fff"/>
+<rect x="228.0" y="505.0" width="54" height="30" rx="4" fill="#2e8b8b" stroke="#fff" stroke-width="1.5"/>
+<line x1="237.0" y1="515" x2="273.0" y2="515" stroke="#fff" stroke-width="2"/>
+<path d="M273.0,515 l-6,-4 l0,8 z" fill="#fff"/>
+<line x1="237.0" y1="525" x2="273.0" y2="525" stroke="#fff" stroke-width="2"/>
+<path d="M237.0,525 l6,-4 l0,8 z" fill="#fff"/>
+<ellipse cx="700" cy="330" rx="23.0" ry="16.0" fill="#1d5d9b" stroke="#fff" stroke-width="1.5"/>
+<line x1="703" y1="330" x2="716.0" y2="330.0" stroke="#fff" stroke-width="2.2"/>
+<line x1="697" y1="330" x2="684.0" y2="330.0" stroke="#fff" stroke-width="2.2"/>
+<line x1="700" y1="332" x2="700.0" y2="341.0" stroke="#fff" stroke-width="2.2"/>
+<line x1="700" y1="328" x2="700.0" y2="319.0" stroke="#fff" stroke-width="2.2"/>
+<circle cx="700" cy="330" r="2.5" fill="#fff"/>
+<ellipse cx="1020" cy="330" rx="23.0" ry="16.0" fill="#1d5d9b" stroke="#fff" stroke-width="1.5"/>
+<line x1="1023" y1="330" x2="1036.0" y2="330.0" stroke="#fff" stroke-width="2.2"/>
+<line x1="1017" y1="330" x2="1004.0" y2="330.0" stroke="#fff" stroke-width="2.2"/>
+<line x1="1020" y1="332" x2="1020.0" y2="341.0" stroke="#fff" stroke-width="2.2"/>
+<line x1="1020" y1="328" x2="1020.0" y2="319.0" stroke="#fff" stroke-width="2.2"/>
+<circle cx="1020" cy="330" r="2.5" fill="#fff"/>
+<rect x="677.0" y="520.0" width="46" height="40" rx="4" fill="#1d5d9b" stroke="#fff" stroke-width="1.5"/>
+<line x1="700" y1="540" x2="714.0" y2="552.0" stroke="#fff" stroke-width="2"/>
+<line x1="700" y1="540" x2="686.0" y2="528.0" stroke="#fff" stroke-width="2"/>
+<line x1="700" y1="540" x2="714.0" y2="528.0" stroke="#fff" stroke-width="2"/>
+<line x1="700" y1="540" x2="686.0" y2="552.0" stroke="#fff" stroke-width="2"/>
+<rect x="997.0" y="520.0" width="46" height="40" rx="4" fill="#1d5d9b" stroke="#fff" stroke-width="1.5"/>
+<line x1="1020" y1="540" x2="1034.0" y2="552.0" stroke="#fff" stroke-width="2"/>
+<line x1="1020" y1="540" x2="1006.0" y2="528.0" stroke="#fff" stroke-width="2"/>
+<line x1="1020" y1="540" x2="1034.0" y2="528.0" stroke="#fff" stroke-width="2"/>
+<line x1="1020" y1="540" x2="1006.0" y2="552.0" stroke="#fff" stroke-width="2"/>
+<rect x="833.0" y="725.0" width="54" height="30" rx="4" fill="#2e8b8b" stroke="#fff" stroke-width="1.5"/>
+<line x1="842.0" y1="735" x2="878.0" y2="735" stroke="#fff" stroke-width="2"/>
+<path d="M878.0,735 l-6,-4 l0,8 z" fill="#fff"/>
+<line x1="842.0" y1="745" x2="878.0" y2="745" stroke="#fff" stroke-width="2"/>
+<path d="M842.0,745 l6,-4 l0,8 z" fill="#fff"/>
+<ellipse cx="1330" cy="330" rx="23.0" ry="16.0" fill="#1d5d9b" stroke="#fff" stroke-width="1.5"/>
+<line x1="1333" y1="330" x2="1346.0" y2="330.0" stroke="#fff" stroke-width="2.2"/>
+<line x1="1327" y1="330" x2="1314.0" y2="330.0" stroke="#fff" stroke-width="2.2"/>
+<line x1="1330" y1="332" x2="1330.0" y2="341.0" stroke="#fff" stroke-width="2.2"/>
+<line x1="1330" y1="328" x2="1330.0" y2="319.0" stroke="#fff" stroke-width="2.2"/>
+<circle cx="1330" cy="330" r="2.5" fill="#fff"/>
+<ellipse cx="1600" cy="330" rx="23.0" ry="16.0" fill="#1d5d9b" stroke="#fff" stroke-width="1.5"/>
+<line x1="1603" y1="330" x2="1616.0" y2="330.0" stroke="#fff" stroke-width="2.2"/>
+<line x1="1597" y1="330" x2="1584.0" y2="330.0" stroke="#fff" stroke-width="2.2"/>
+<line x1="1600" y1="332" x2="1600.0" y2="341.0" stroke="#fff" stroke-width="2.2"/>
+<line x1="1600" y1="328" x2="1600.0" y2="319.0" stroke="#fff" stroke-width="2.2"/>
+<circle cx="1600" cy="330" r="2.5" fill="#fff"/>
+<rect x="1438.0" y="505.0" width="54" height="30" rx="4" fill="#2e8b8b" stroke="#fff" stroke-width="1.5"/>
+<line x1="1447.0" y1="515" x2="1483.0" y2="515" stroke="#fff" stroke-width="2"/>
+<path d="M1483.0,515 l-6,-4 l0,8 z" fill="#fff"/>
+<line x1="1447.0" y1="525" x2="1483.0" y2="525" stroke="#fff" stroke-width="2"/>
+<path d="M1447.0,525 l6,-4 l0,8 z" fill="#fff"/>
+<rect x="572.0" y="913.0" width="36" height="23.12" rx="2" fill="#555f6d"/>
+<rect x="576.0" y="917.0" width="28" height="15.120000000000001" fill="#cfe3f5"/>
+<rect x="586" y="936.12" width="8" height="6.12" fill="#555f6d"/>
+<rect x="578.0" y="941.56" width="24.0" height="4" fill="#555f6d"/>
+<rect x="712.0" y="913.0" width="36" height="23.12" rx="2" fill="#555f6d"/>
+<rect x="716.0" y="917.0" width="28" height="15.120000000000001" fill="#cfe3f5"/>
+<rect x="726" y="936.12" width="8" height="6.12" fill="#555f6d"/>
+<rect x="718.0" y="941.56" width="24.0" height="4" fill="#555f6d"/>
+<rect x="852.0" y="913.0" width="36" height="23.12" rx="2" fill="#555f6d"/>
+<rect x="856.0" y="917.0" width="28" height="15.120000000000001" fill="#cfe3f5"/>
+<rect x="866" y="936.12" width="8" height="6.12" fill="#555f6d"/>
+<rect x="858.0" y="941.56" width="24.0" height="4" fill="#555f6d"/>
+<rect x="992.0" y="913.0" width="36" height="23.12" rx="2" fill="#555f6d"/>
+<rect x="996.0" y="917.0" width="28" height="15.120000000000001" fill="#cfe3f5"/>
+<rect x="1006" y="936.12" width="8" height="6.12" fill="#555f6d"/>
+<rect x="998.0" y="941.56" width="24.0" height="4" fill="#555f6d"/>
+<rect x="1120.0" y="908.0" width="30" height="44" rx="3" fill="#555f6d"/>
+<line x1="1125.0" y1="917.0" x2="1145.0" y2="917.0" stroke="#fff" stroke-width="2"/>
+<line x1="1125.0" y1="927.0" x2="1145.0" y2="927.0" stroke="#fff" stroke-width="2"/>
+<line x1="1125.0" y1="937.0" x2="1145.0" y2="937.0" stroke="#fff" stroke-width="2"/>
+<rect x="72.0" y="673.0" width="36" height="23.12" rx="2" fill="#555f6d"/>
+<rect x="76.0" y="677.0" width="28" height="15.120000000000001" fill="#cfe3f5"/>
+<rect x="86" y="696.12" width="8" height="6.12" fill="#555f6d"/>
+<rect x="78.0" y="701.56" width="24.0" height="4" fill="#555f6d"/>
+<rect x="237.0" y="673.0" width="36" height="23.12" rx="2" fill="#555f6d"/>
+<rect x="241.0" y="677.0" width="28" height="15.120000000000001" fill="#cfe3f5"/>
+<rect x="251" y="696.12" width="8" height="6.12" fill="#555f6d"/>
+<rect x="243.0" y="701.56" width="24.0" height="4" fill="#555f6d"/>
+<rect x="402.0" y="673.0" width="36" height="23.12" rx="2" fill="#555f6d"/>
+<rect x="406.0" y="677.0" width="28" height="15.120000000000001" fill="#cfe3f5"/>
+<rect x="416" y="696.12" width="8" height="6.12" fill="#555f6d"/>
+<rect x="408.0" y="701.56" width="24.0" height="4" fill="#555f6d"/>
+<rect x="1272.0" y="673.0" width="36" height="23.12" rx="2" fill="#555f6d"/>
+<rect x="1276.0" y="677.0" width="28" height="15.120000000000001" fill="#cfe3f5"/>
+<rect x="1286" y="696.12" width="8" height="6.12" fill="#555f6d"/>
+<rect x="1278.0" y="701.56" width="24.0" height="4" fill="#555f6d"/>
+<rect x="1387.0" y="673.0" width="36" height="23.12" rx="2" fill="#555f6d"/>
+<rect x="1391.0" y="677.0" width="28" height="15.120000000000001" fill="#cfe3f5"/>
+<rect x="1401" y="696.12" width="8" height="6.12" fill="#555f6d"/>
+<rect x="1393.0" y="701.56" width="24.0" height="4" fill="#555f6d"/>
+<rect x="1502.0" y="673.0" width="36" height="23.12" rx="2" fill="#555f6d"/>
+<rect x="1506.0" y="677.0" width="28" height="15.120000000000001" fill="#cfe3f5"/>
+<rect x="1516" y="696.12" width="8" height="6.12" fill="#555f6d"/>
+<rect x="1508.0" y="701.56" width="24.0" height="4" fill="#555f6d"/>
+<rect x="1622.0" y="673.0" width="36" height="23.12" rx="2" fill="#555f6d"/>
+<rect x="1626.0" y="677.0" width="28" height="15.120000000000001" fill="#cfe3f5"/>
+<rect x="1636" y="696.12" width="8" height="6.12" fill="#555f6d"/>
+<rect x="1628.0" y="701.56" width="24.0" height="4" fill="#555f6d"/>
+<rect x="748.4" y="128.0" width="31.2" height="14.0" rx="2" fill="#ffffff" fill-opacity="0.93"/>
+<text x="764.0" y="138.0" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#000" text-anchor="middle">Gi0/4</text>
+<rect x="940.4" y="128.0" width="31.2" height="14.0" rx="2" fill="#ffffff" fill-opacity="0.93"/>
+<text x="956.0" y="138.0" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#000" text-anchor="middle">Gi0/4</text>
+<rect x="814.4" y="127.8" width="91.1" height="14.5" rx="2" fill="#ffffff" fill-opacity="0.93" stroke="#6b7785" stroke-width="0.8"/>
+<text x="860.0" y="138.2" font-family="Helvetica, Arial, sans-serif" font-size="9.5" fill="#6b7785" text-anchor="middle">203.0.113.248/30</text>
+<rect x="684.4" y="151.4" width="31.2" height="14.0" rx="2" fill="#ffffff" fill-opacity="0.93"/>
+<text x="700.0" y="161.4" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#000" text-anchor="middle">Gi0/1</text>
+<rect x="684.4" y="303.5" width="31.2" height="14.0" rx="2" fill="#ffffff" fill-opacity="0.93"/>
+<text x="700.0" y="313.5" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#000" text-anchor="middle">Gi0/1</text>
+<rect x="659.8" y="235.0" width="80.5" height="14.5" rx="2" fill="#ffffff" fill-opacity="0.93" stroke="#1f77b4" stroke-width="0.8"/>
+<text x="700.0" y="245.5" font-family="Helvetica, Arial, sans-serif" font-size="9.5" fill="#1f77b4" text-anchor="middle">203.0.113.0/30</text>
+<rect x="614.8" y="151.4" width="31.2" height="14.0" rx="2" fill="#ffffff" fill-opacity="0.93"/>
+<text x="630.4" y="161.4" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#000" text-anchor="middle">Gi0/2</text>
+<rect x="162.4" y="303.5" width="31.2" height="14.0" rx="2" fill="#ffffff" fill-opacity="0.93"/>
+<text x="178.0" y="313.5" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#000" text-anchor="middle">Gi0/1</text>
+<rect x="416.2" y="209.6" width="80.5" height="14.5" rx="2" fill="#ffffff" fill-opacity="0.93" stroke="#1f77b4" stroke-width="0.8"/>
+<text x="456.4" y="220.1" font-family="Helvetica, Arial, sans-serif" font-size="9.5" fill="#1f77b4" text-anchor="middle">203.0.113.4/30</text>
+<rect x="760.0" y="151.4" width="31.2" height="14.0" rx="2" fill="#ffffff" fill-opacity="0.93"/>
+<text x="775.6" y="161.4" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#000" text-anchor="middle">Gi0/3</text>
+<rect x="1251.4" y="303.5" width="31.2" height="14.0" rx="2" fill="#ffffff" fill-opacity="0.93"/>
+<text x="1267.0" y="313.5" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#000" text-anchor="middle">Gi0/1</text>
+<rect x="1050.4" y="248.7" width="80.5" height="14.5" rx="2" fill="#ffffff" fill-opacity="0.93" stroke="#1f77b4" stroke-width="0.8"/>
+<text x="1090.6" y="259.1" font-family="Helvetica, Arial, sans-serif" font-size="9.5" fill="#1f77b4" text-anchor="middle">203.0.113.8/30</text>
+<rect x="1004.4" y="151.4" width="31.2" height="14.0" rx="2" fill="#ffffff" fill-opacity="0.93"/>
+<text x="1020.0" y="161.4" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#000" text-anchor="middle">Gi0/1</text>
+<rect x="1004.4" y="303.5" width="31.2" height="14.0" rx="2" fill="#ffffff" fill-opacity="0.93"/>
+<text x="1020.0" y="313.5" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#000" text-anchor="middle">Gi0/1</text>
+<rect x="977.1" y="235.0" width="85.8" height="14.5" rx="2" fill="#ffffff" fill-opacity="0.93" stroke="#d9711c" stroke-width="0.8"/>
+<text x="1020.0" y="245.5" font-family="Helvetica, Arial, sans-serif" font-size="9.5" fill="#d9711c" text-anchor="middle">198.51.100.0/30</text>
+<rect x="928.8" y="151.4" width="31.2" height="14.0" rx="2" fill="#ffffff" fill-opacity="0.93"/>
+<text x="944.4" y="161.4" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#000" text-anchor="middle">Gi0/2</text>
+<rect x="437.4" y="303.5" width="31.2" height="14.0" rx="2" fill="#ffffff" fill-opacity="0.93"/>
+<text x="453.0" y="313.5" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#000" text-anchor="middle">Gi0/1</text>
+<rect x="750.3" y="197.9" width="85.8" height="14.5" rx="2" fill="#ffffff" fill-opacity="0.93" stroke="#d9711c" stroke-width="0.8"/>
+<text x="793.2" y="208.4" font-family="Helvetica, Arial, sans-serif" font-size="9.5" fill="#d9711c" text-anchor="middle">198.51.100.4/30</text>
+<rect x="1074.0" y="151.4" width="31.2" height="14.0" rx="2" fill="#ffffff" fill-opacity="0.93"/>
+<text x="1089.6" y="161.4" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#000" text-anchor="middle">Gi0/3</text>
+<rect x="1526.4" y="303.5" width="31.2" height="14.0" rx="2" fill="#ffffff" fill-opacity="0.93"/>
+<text x="1542.0" y="313.5" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#000" text-anchor="middle">Gi0/1</text>
+<rect x="1238.1" y="215.5" width="85.8" height="14.5" rx="2" fill="#ffffff" fill-opacity="0.93" stroke="#d9711c" stroke-width="0.8"/>
+<text x="1281.0" y="226.0" font-family="Helvetica, Arial, sans-serif" font-size="9.5" fill="#d9711c" text-anchor="middle">198.51.100.8/30</text>
+<rect x="685.1" y="365.2" width="29.8" height="13.5" rx="2" fill="#ffffff" fill-opacity="0.93"/>
+<text x="700.0" y="374.8" font-family="Helvetica, Arial, sans-serif" font-size="8.5" fill="#000" text-anchor="middle">Gi0/2</text>
+<rect x="685.1" y="491.2" width="29.8" height="13.5" rx="2" fill="#ffffff" fill-opacity="0.93"/>
+<text x="700.0" y="500.8" font-family="Helvetica, Arial, sans-serif" font-size="8.5" fill="#000" text-anchor="middle">Gi1/0</text>
+<rect x="661.7" y="428.0" width="76.6" height="14.0" rx="2" fill="#ffffff" fill-opacity="0.93" stroke="#333" stroke-width="0.8"/>
+<text x="700.0" y="438.0" font-family="Helvetica, Arial, sans-serif" font-size="9.0" fill="#333" text-anchor="middle">10.10.254.0/30</text>
+<rect x="749.1" y="365.2" width="29.8" height="13.5" rx="2" fill="#ffffff" fill-opacity="0.93"/>
+<text x="764.0" y="374.8" font-family="Helvetica, Arial, sans-serif" font-size="8.5" fill="#000" text-anchor="middle">Gi0/3</text>
+<rect x="941.1" y="491.2" width="29.8" height="13.5" rx="2" fill="#ffffff" fill-opacity="0.93"/>
+<text x="956.0" y="500.8" font-family="Helvetica, Arial, sans-serif" font-size="8.5" fill="#000" text-anchor="middle">Gi1/0</text>
+<rect x="757.7" y="386.0" width="76.6" height="14.0" rx="2" fill="#ffffff" fill-opacity="0.93" stroke="#333" stroke-width="0.8"/>
+<text x="796.0" y="396.0" font-family="Helvetica, Arial, sans-serif" font-size="9.0" fill="#333" text-anchor="middle">10.10.254.4/30</text>
+<rect x="941.1" y="365.2" width="29.8" height="13.5" rx="2" fill="#ffffff" fill-opacity="0.93"/>
+<text x="956.0" y="374.8" font-family="Helvetica, Arial, sans-serif" font-size="8.5" fill="#000" text-anchor="middle">Gi0/2</text>
+<rect x="749.1" y="491.2" width="29.8" height="13.5" rx="2" fill="#ffffff" fill-opacity="0.93"/>
+<text x="764.0" y="500.8" font-family="Helvetica, Arial, sans-serif" font-size="8.5" fill="#000" text-anchor="middle">Gi1/1</text>
+<rect x="885.7" y="386.0" width="76.6" height="14.0" rx="2" fill="#ffffff" fill-opacity="0.93" stroke="#333" stroke-width="0.8"/>
+<text x="924.0" y="396.0" font-family="Helvetica, Arial, sans-serif" font-size="9.0" fill="#333" text-anchor="middle">10.10.254.8/30</text>
+<rect x="1005.1" y="365.2" width="29.8" height="13.5" rx="2" fill="#ffffff" fill-opacity="0.93"/>
+<text x="1020.0" y="374.8" font-family="Helvetica, Arial, sans-serif" font-size="8.5" fill="#000" text-anchor="middle">Gi0/3</text>
+<rect x="1005.1" y="491.2" width="29.8" height="13.5" rx="2" fill="#ffffff" fill-opacity="0.93"/>
+<text x="1020.0" y="500.8" font-family="Helvetica, Arial, sans-serif" font-size="8.5" fill="#000" text-anchor="middle">Gi1/1</text>
+<rect x="979.2" y="428.0" width="81.6" height="14.0" rx="2" fill="#ffffff" fill-opacity="0.93" stroke="#333" stroke-width="0.8"/>
+<text x="1020.0" y="438.0" font-family="Helvetica, Arial, sans-serif" font-size="9.0" fill="#333" text-anchor="middle">10.10.254.12/30</text>
+<rect x="749.1" y="323.2" width="29.8" height="13.5" rx="2" fill="#ffffff" fill-opacity="0.93"/>
+<text x="764.0" y="332.8" font-family="Helvetica, Arial, sans-serif" font-size="8.5" fill="#000" text-anchor="middle">Gi0/4</text>
+<rect x="941.1" y="323.2" width="29.8" height="13.5" rx="2" fill="#ffffff" fill-opacity="0.93"/>
+<text x="956.0" y="332.8" font-family="Helvetica, Arial, sans-serif" font-size="8.5" fill="#000" text-anchor="middle">Gi0/4</text>
+<rect x="819.2" y="323.0" width="81.6" height="14.0" rx="2" fill="#ffffff" fill-opacity="0.93" stroke="#333" stroke-width="0.8"/>
+<text x="860.0" y="333.0" font-family="Helvetica, Arial, sans-serif" font-size="9.0" fill="#333" text-anchor="middle">10.10.254.16/30</text>
+<rect x="159.1" y="323.2" width="29.8" height="13.5" rx="2" fill="#ffffff" fill-opacity="0.93"/>
+<text x="174.0" y="332.8" font-family="Helvetica, Arial, sans-serif" font-size="8.5" fill="#000" text-anchor="middle">Gi0/3</text>
+<rect x="321.1" y="323.2" width="29.8" height="13.5" rx="2" fill="#ffffff" fill-opacity="0.93"/>
+<text x="336.0" y="332.8" font-family="Helvetica, Arial, sans-serif" font-size="8.5" fill="#000" text-anchor="middle">Gi0/3</text>
+<rect x="216.7" y="323.0" width="76.6" height="14.0" rx="2" fill="#ffffff" fill-opacity="0.93" stroke="#333" stroke-width="0.8"/>
+<text x="255.0" y="333.0" font-family="Helvetica, Arial, sans-serif" font-size="9.0" fill="#333" text-anchor="middle">10.20.254.0/30</text>
+<rect x="1369.1" y="323.2" width="29.8" height="13.5" rx="2" fill="#ffffff" fill-opacity="0.93"/>
+<text x="1384.0" y="332.8" font-family="Helvetica, Arial, sans-serif" font-size="8.5" fill="#000" text-anchor="middle">Gi0/3</text>
+<rect x="1531.1" y="323.2" width="29.8" height="13.5" rx="2" fill="#ffffff" fill-opacity="0.93"/>
+<text x="1546.0" y="332.8" font-family="Helvetica, Arial, sans-serif" font-size="8.5" fill="#000" text-anchor="middle">Gi0/3</text>
+<rect x="1426.7" y="323.0" width="76.6" height="14.0" rx="2" fill="#ffffff" fill-opacity="0.93" stroke="#333" stroke-width="0.8"/>
+<text x="1465.0" y="333.0" font-family="Helvetica, Arial, sans-serif" font-size="9.0" fill="#333" text-anchor="middle">10.30.254.0/30</text>
+<rect x="721.9" y="533.2" width="39.3" height="13.5" rx="2" fill="#ffffff" fill-opacity="0.93"/>
+<text x="741.6" y="542.8" font-family="Helvetica, Arial, sans-serif" font-size="8.5" fill="#000" text-anchor="middle">Gi0/1-2</text>
+<rect x="958.7" y="533.2" width="39.3" height="13.5" rx="2" fill="#ffffff" fill-opacity="0.93"/>
+<text x="978.4" y="542.8" font-family="Helvetica, Arial, sans-serif" font-size="8.5" fill="#000" text-anchor="middle">Gi0/1-2</text>
+<rect x="756.2" y="533.0" width="207.6" height="14.0" rx="2" fill="#ffffff" fill-opacity="0.93" stroke="#333" stroke-width="0.8"/>
+<text x="860.0" y="543.0" font-family="Helvetica, Arial, sans-serif" font-size="9.0" fill="#333" text-anchor="middle">Po1 LACP trunk + VLAN900 10.10.254.20/30</text>
+<rect x="717.1" y="573.2" width="29.8" height="13.5" rx="2" fill="#ffffff" fill-opacity="0.93"/>
+<text x="732.0" y="582.8" font-family="Helvetica, Arial, sans-serif" font-size="8.5" fill="#000" text-anchor="middle">Gi0/3</text>
+<rect x="813.1" y="693.2" width="29.8" height="13.5" rx="2" fill="#ffffff" fill-opacity="0.93"/>
+<text x="828.0" y="702.8" font-family="Helvetica, Arial, sans-serif" font-size="8.5" fill="#000" text-anchor="middle">Gi0/1</text>
+<rect x="761.9" y="633.0" width="36.2" height="14.0" rx="2" fill="#ffffff" fill-opacity="0.93" stroke="#2e8b8b" stroke-width="0.8"/>
+<text x="780.0" y="643.0" font-family="Helvetica, Arial, sans-serif" font-size="9.0" fill="#2e8b8b" text-anchor="middle">802.1Q</text>
+<rect x="973.1" y="573.2" width="29.8" height="13.5" rx="2" fill="#ffffff" fill-opacity="0.93"/>
+<text x="988.0" y="582.8" font-family="Helvetica, Arial, sans-serif" font-size="8.5" fill="#000" text-anchor="middle">Gi0/3</text>
+<rect x="877.1" y="693.2" width="29.8" height="13.5" rx="2" fill="#ffffff" fill-opacity="0.93"/>
+<text x="892.0" y="702.8" font-family="Helvetica, Arial, sans-serif" font-size="8.5" fill="#000" text-anchor="middle">Gi0/2</text>
+<rect x="921.9" y="633.0" width="36.2" height="14.0" rx="2" fill="#ffffff" fill-opacity="0.93" stroke="#2e8b8b" stroke-width="0.8"/>
+<text x="940.0" y="643.0" font-family="Helvetica, Arial, sans-serif" font-size="9.0" fill="#2e8b8b" text-anchor="middle">802.1Q</text>
+<rect x="132.1" y="361.2" width="29.8" height="13.5" rx="2" fill="#ffffff" fill-opacity="0.93"/>
+<text x="147.0" y="370.8" font-family="Helvetica, Arial, sans-serif" font-size="8.5" fill="#000" text-anchor="middle">Gi0/2</text>
+<rect x="213.1" y="475.2" width="29.8" height="13.5" rx="2" fill="#ffffff" fill-opacity="0.93"/>
+<text x="228.0" y="484.8" font-family="Helvetica, Arial, sans-serif" font-size="8.5" fill="#000" text-anchor="middle">Gi0/1</text>
+<rect x="169.4" y="418.0" width="36.2" height="14.0" rx="2" fill="#ffffff" fill-opacity="0.93" stroke="#2e8b8b" stroke-width="0.8"/>
+<text x="187.5" y="428.0" font-family="Helvetica, Arial, sans-serif" font-size="9.0" fill="#2e8b8b" text-anchor="middle">802.1Q</text>
+<rect x="348.1" y="361.2" width="29.8" height="13.5" rx="2" fill="#ffffff" fill-opacity="0.93"/>
+<text x="363.0" y="370.8" font-family="Helvetica, Arial, sans-serif" font-size="8.5" fill="#000" text-anchor="middle">Gi0/2</text>
+<rect x="267.1" y="475.2" width="29.8" height="13.5" rx="2" fill="#ffffff" fill-opacity="0.93"/>
+<text x="282.0" y="484.8" font-family="Helvetica, Arial, sans-serif" font-size="8.5" fill="#000" text-anchor="middle">Gi0/2</text>
+<rect x="304.4" y="418.0" width="36.2" height="14.0" rx="2" fill="#ffffff" fill-opacity="0.93" stroke="#2e8b8b" stroke-width="0.8"/>
+<text x="322.5" y="428.0" font-family="Helvetica, Arial, sans-serif" font-size="9.0" fill="#2e8b8b" text-anchor="middle">802.1Q</text>
+<rect x="1342.1" y="361.2" width="29.8" height="13.5" rx="2" fill="#ffffff" fill-opacity="0.93"/>
+<text x="1357.0" y="370.8" font-family="Helvetica, Arial, sans-serif" font-size="8.5" fill="#000" text-anchor="middle">Gi0/2</text>
+<rect x="1423.1" y="475.2" width="29.8" height="13.5" rx="2" fill="#ffffff" fill-opacity="0.93"/>
+<text x="1438.0" y="484.8" font-family="Helvetica, Arial, sans-serif" font-size="8.5" fill="#000" text-anchor="middle">Gi0/1</text>
+<rect x="1379.4" y="418.0" width="36.2" height="14.0" rx="2" fill="#ffffff" fill-opacity="0.93" stroke="#2e8b8b" stroke-width="0.8"/>
+<text x="1397.5" y="428.0" font-family="Helvetica, Arial, sans-serif" font-size="9.0" fill="#2e8b8b" text-anchor="middle">802.1Q</text>
+<rect x="1558.1" y="361.2" width="29.8" height="13.5" rx="2" fill="#ffffff" fill-opacity="0.93"/>
+<text x="1573.0" y="370.8" font-family="Helvetica, Arial, sans-serif" font-size="8.5" fill="#000" text-anchor="middle">Gi0/2</text>
+<rect x="1477.1" y="475.2" width="29.8" height="13.5" rx="2" fill="#ffffff" fill-opacity="0.93"/>
+<text x="1492.0" y="484.8" font-family="Helvetica, Arial, sans-serif" font-size="8.5" fill="#000" text-anchor="middle">Gi0/2</text>
+<rect x="1514.4" y="418.0" width="36.2" height="14.0" rx="2" fill="#ffffff" fill-opacity="0.93" stroke="#2e8b8b" stroke-width="0.8"/>
+<text x="1532.5" y="428.0" font-family="Helvetica, Arial, sans-serif" font-size="9.0" fill="#2e8b8b" text-anchor="middle">802.1Q</text>
+<rect x="736.4" y="809.0" width="31.2" height="14.0" rx="2" fill="#ffffff" fill-opacity="0.93"/>
+<text x="752.0" y="819.0" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#000" text-anchor="middle">Gi1/0</text>
+<rect x="792.4" y="809.0" width="31.2" height="14.0" rx="2" fill="#ffffff" fill-opacity="0.93"/>
+<text x="808.0" y="819.0" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#000" text-anchor="middle">Gi1/1</text>
+<rect x="848.4" y="809.0" width="31.2" height="14.0" rx="2" fill="#ffffff" fill-opacity="0.93"/>
+<text x="864.0" y="819.0" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#000" text-anchor="middle">Gi1/2</text>
+<rect x="904.4" y="809.0" width="31.2" height="14.0" rx="2" fill="#ffffff" fill-opacity="0.93"/>
+<text x="920.0" y="819.0" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#000" text-anchor="middle">Gi1/3</text>
+<rect x="954.4" y="809.0" width="31.2" height="14.0" rx="2" fill="#ffffff" fill-opacity="0.93"/>
+<text x="970.0" y="819.0" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#000" text-anchor="middle">Gi2/0</text>
+<rect x="173.4" y="581.0" width="31.2" height="14.0" rx="2" fill="#ffffff" fill-opacity="0.93"/>
+<text x="189.0" y="591.0" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#000" text-anchor="middle">Gi1/0</text>
+<rect x="239.4" y="581.0" width="31.2" height="14.0" rx="2" fill="#ffffff" fill-opacity="0.93"/>
+<text x="255.0" y="591.0" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#000" text-anchor="middle">Gi1/1</text>
+<rect x="305.4" y="581.0" width="31.2" height="14.0" rx="2" fill="#ffffff" fill-opacity="0.93"/>
+<text x="321.0" y="591.0" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#000" text-anchor="middle">Gi1/2</text>
+<rect x="1379.4" y="581.0" width="31.2" height="14.0" rx="2" fill="#ffffff" fill-opacity="0.93"/>
+<text x="1395.0" y="591.0" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#000" text-anchor="middle">Gi1/0</text>
+<rect x="1425.4" y="581.0" width="31.2" height="14.0" rx="2" fill="#ffffff" fill-opacity="0.93"/>
+<text x="1441.0" y="591.0" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#000" text-anchor="middle">Gi1/1</text>
+<rect x="1471.4" y="581.0" width="31.2" height="14.0" rx="2" fill="#ffffff" fill-opacity="0.93"/>
+<text x="1487.0" y="591.0" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#000" text-anchor="middle">Gi1/2</text>
+<rect x="1519.4" y="581.0" width="31.2" height="14.0" rx="2" fill="#ffffff" fill-opacity="0.93"/>
+<text x="1535.0" y="591.0" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#000" text-anchor="middle">Gi1/3</text>
+<text x="700.0" y="164.0" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#111" text-anchor="middle" font-weight="bold">ISP-A</text>
+<text x="700.0" y="176.0" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#444" text-anchor="middle">SaaS 192.0.2.10, DNS 192.0.2.53</text>
+<text x="1020.0" y="164.0" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#111" text-anchor="middle" font-weight="bold">ISP-B</text>
+<text x="1020.0" y="176.0" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#444" text-anchor="middle">Cloud-B 198.51.100.200</text>
+<text x="91.0" y="328.0" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#111" text-anchor="end" font-weight="bold">HAN-EDG1</text>
+<text x="91.0" y="340.0" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#444" text-anchor="end">Lo0 10.20.255.1</text>
+<text x="91.0" y="352.0" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#444" text-anchor="end">mgmt 172.16.99.21</text>
+<text x="419.0" y="328.0" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#111" text-anchor="start" font-weight="bold">HAN-EDG2</text>
+<text x="419.0" y="340.0" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#444" text-anchor="start">Lo0 10.20.255.2</text>
+<text x="419.0" y="352.0" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#444" text-anchor="start">mgmt 172.16.99.22</text>
+<text x="288.0" y="518.0" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#111" text-anchor="start" font-weight="bold">HAN-ACC1</text>
+<text x="288.0" y="530.0" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#444" text-anchor="start">VLAN99 10.20.31.15</text>
+<text x="288.0" y="542.0" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#444" text-anchor="start">mgmt 172.16.99.25</text>
+<text x="671.0" y="328.0" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#111" text-anchor="end" font-weight="bold">HCM-EDG1</text>
+<text x="671.0" y="340.0" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#444" text-anchor="end">Lo0 10.10.255.1</text>
+<text x="671.0" y="352.0" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#444" text-anchor="end">mgmt 172.16.99.11</text>
+<text x="1049.0" y="328.0" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#111" text-anchor="start" font-weight="bold">HCM-EDG2</text>
+<text x="1049.0" y="340.0" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#444" text-anchor="start">Lo0 10.10.255.2</text>
+<text x="1049.0" y="352.0" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#444" text-anchor="start">mgmt 172.16.99.12</text>
+<text x="671.0" y="538.0" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#111" text-anchor="end" font-weight="bold">HCM-CORE1</text>
+<text x="671.0" y="550.0" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#444" text-anchor="end">Lo0 10.10.255.3</text>
+<text x="671.0" y="562.0" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#444" text-anchor="end">mgmt 172.16.99.13</text>
+<text x="1049.0" y="538.0" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#111" text-anchor="start" font-weight="bold">HCM-CORE2</text>
+<text x="1049.0" y="550.0" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#444" text-anchor="start">Lo0 10.10.255.4</text>
+<text x="1049.0" y="562.0" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#444" text-anchor="start">mgmt 172.16.99.14</text>
+<text x="893.0" y="738.0" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#111" text-anchor="start" font-weight="bold">HCM-ACC1</text>
+<text x="893.0" y="750.0" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#444" text-anchor="start">VLAN99 10.10.44.15</text>
+<text x="893.0" y="762.0" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#444" text-anchor="start">mgmt 172.16.99.15</text>
+<text x="1301.0" y="328.0" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#111" text-anchor="end" font-weight="bold">DAD-EDG1</text>
+<text x="1301.0" y="340.0" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#444" text-anchor="end">Lo0 10.30.255.1</text>
+<text x="1301.0" y="352.0" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#444" text-anchor="end">mgmt 172.16.99.31</text>
+<text x="1629.0" y="328.0" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#111" text-anchor="start" font-weight="bold">DAD-EDG2</text>
+<text x="1629.0" y="340.0" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#444" text-anchor="start">Lo0 10.30.255.2</text>
+<text x="1629.0" y="352.0" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#444" text-anchor="start">mgmt 172.16.99.32</text>
+<text x="1498.0" y="518.0" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#111" text-anchor="start" font-weight="bold">DAD-ACC1</text>
+<text x="1498.0" y="530.0" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#444" text-anchor="start">VLAN99 10.30.144.15</text>
+<text x="1498.0" y="542.0" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#444" text-anchor="start">mgmt 172.16.99.35</text>
+<text x="590.0" y="960.0" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#111" text-anchor="middle" font-weight="bold">HCM-EXEC</text>
+<text x="590.0" y="972.0" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#444" text-anchor="middle">VLAN 10 EXEC_FINANCE</text>
+<text x="590.0" y="984.0" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#444" text-anchor="middle">10.10.32.0/24</text>
+<text x="730.0" y="960.0" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#111" text-anchor="middle" font-weight="bold">HCM-CORP</text>
+<text x="730.0" y="972.0" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#444" text-anchor="middle">VLAN 12 CORP_STAFF</text>
+<text x="730.0" y="984.0" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#444" text-anchor="middle">10.10.0.0/24</text>
+<text x="870.0" y="960.0" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#111" text-anchor="middle" font-weight="bold">HCM-GUEST</text>
+<text x="870.0" y="972.0" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#444" text-anchor="middle">VLAN 60 GUEST</text>
+<text x="870.0" y="984.0" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#444" text-anchor="middle">10.10.36.0/24</text>
+<text x="1010.0" y="960.0" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#111" text-anchor="middle" font-weight="bold">HCM-PHONE</text>
+<text x="1010.0" y="972.0" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#444" text-anchor="middle">VLAN 40 VOICE</text>
+<text x="1010.0" y="984.0" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#444" text-anchor="middle">10.10.16.0/24</text>
+<text x="1135.0" y="965.0" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#111" text-anchor="middle" font-weight="bold">HCM-SRV1</text>
+<text x="1135.0" y="977.0" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#444" text-anchor="middle">VLAN 80  10.10.43.10</text>
+<text x="1135.0" y="989.0" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#444" text-anchor="middle">DHCP / DNS / NTP / IP SLA</text>
+<text x="90.0" y="720.0" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#111" text-anchor="middle" font-weight="bold">HAN-ENG</text>
+<text x="90.0" y="732.0" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#444" text-anchor="middle">VLAN 20 RND_ENGINEERING</text>
+<text x="90.0" y="744.0" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#444" text-anchor="middle">10.20.0.0/24</text>
+<text x="255.0" y="720.0" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#111" text-anchor="middle" font-weight="bold">HAN-PHONE</text>
+<text x="255.0" y="732.0" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#444" text-anchor="middle">VLAN 40 VOICE</text>
+<text x="255.0" y="744.0" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#444" text-anchor="middle">10.20.16.0/24</text>
+<text x="420.0" y="720.0" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#111" text-anchor="middle" font-weight="bold">HAN-GUEST</text>
+<text x="420.0" y="732.0" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#444" text-anchor="middle">VLAN 60 GUEST</text>
+<text x="420.0" y="744.0" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#444" text-anchor="middle">10.20.24.0/24</text>
+<text x="1290.0" y="720.0" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#111" text-anchor="middle" font-weight="bold">DAD-LOG</text>
+<text x="1290.0" y="732.0" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#444" text-anchor="middle">VLAN 30 LOGISTICS_OPS</text>
+<text x="1290.0" y="744.0" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#444" text-anchor="middle">10.30.128.0/24</text>
+<text x="1405.0" y="720.0" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#111" text-anchor="middle" font-weight="bold">DAD-IOT</text>
+<text x="1405.0" y="732.0" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#444" text-anchor="middle">VLAN 50 IOT_DEVICES</text>
+<text x="1405.0" y="744.0" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#444" text-anchor="middle">10.30.0.0/24</text>
+<text x="1520.0" y="720.0" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#111" text-anchor="middle" font-weight="bold">DAD-PHONE</text>
+<text x="1520.0" y="732.0" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#444" text-anchor="middle">VLAN 40 VOICE</text>
+<text x="1520.0" y="744.0" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#444" text-anchor="middle">10.30.136.0/24</text>
+<text x="1640.0" y="720.0" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#111" text-anchor="middle" font-weight="bold">DAD-GUEST</text>
+<text x="1640.0" y="732.0" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#444" text-anchor="middle">VLAN 60 GUEST</text>
+<text x="1640.0" y="744.0" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#444" text-anchor="middle">10.30.140.0/24</text>
+<text x="860.0" y="28.0" font-family="Helvetica, Arial, sans-serif" font-size="17" fill="#1f2d3d" text-anchor="middle" font-weight="bold">Lab A (EVE-NG) -- physical topology, interfaces and link subnets</text>
+<rect x="1108.4" y="782.5" width="213.2" height="75.0" rx="2" fill="#ffffff" fill-opacity="0.93" stroke="#9aa7b5" stroke-width="0.8"/>
+<text x="1215.0" y="793.5" font-family="Helvetica, Arial, sans-serif" font-size="10" fill="#222" text-anchor="middle">Out-of-band management (not drawn):</text>
+<text x="1215.0" y="805.5" font-family="Helvetica, Arial, sans-serif" font-size="10" fill="#222" text-anchor="middle">Gi0/0 of every node -&gt; EVE-NG Cloud0</text>
+<text x="1215.0" y="817.5" font-family="Helvetica, Arial, sans-serif" font-size="10" fill="#222" text-anchor="middle">172.16.99.0/24, automation host .1</text>
+<text x="1215.0" y="829.5" font-family="Helvetica, Arial, sans-serif" font-size="10" fill="#222" text-anchor="middle"></text>
+<text x="1215.0" y="841.5" font-family="Helvetica, Arial, sans-serif" font-size="10" fill="#222" text-anchor="middle">Overlay tunnels: see routing diagram.</text>
+<text x="1215.0" y="853.5" font-family="Helvetica, Arial, sans-serif" font-size="10" fill="#222" text-anchor="middle">vIOS: set 6 NICs (uses Gi0/0-Gi0/4)</text>
+</svg>

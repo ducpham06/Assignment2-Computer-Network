@@ -1,0 +1,5 @@
+# PC-DAD-PHONE -- VLAN 40 VOICE on DAD-ACC1 Gi1/2
+set pcname PC-DAD-PHONE
+ip dhcp
+ip auto
+save

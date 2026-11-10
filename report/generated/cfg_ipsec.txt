@@ -1,0 +1,22 @@
+crypto ikev2 proposal TVI-IKEV2-PROP
+ encryption aes-cbc-256
+ integrity sha256
+ group 14
+crypto ikev2 policy TVI-IKEV2-POL
+ proposal TVI-IKEV2-PROP
+crypto ikev2 keyring TVI-KEYRING
+ peer ANY-SITE
+  address 0.0.0.0 0.0.0.0
+  pre-shared-key TVI-Overlay-PSK-2026
+crypto ikev2 profile TVI-IKEV2-PROFILE
+ match identity remote address 0.0.0.0
+ authentication remote pre-share
+ authentication local pre-share
+ keyring local TVI-KEYRING
+ dpd 10 3 on-demand
+!
+crypto ipsec transform-set TVI-TS esp-aes 256 esp-sha256-hmac
+ mode transport
+crypto ipsec profile TVI-IPSEC-PROFILE
+ set transform-set TVI-TS
+ set ikev2-profile TVI-IKEV2-PROFILE

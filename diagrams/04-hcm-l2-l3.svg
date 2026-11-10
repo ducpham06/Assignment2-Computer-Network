@@ -1,0 +1,175 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="900" viewBox="0 0 1400 900">
+<rect width="1400" height="900" fill="#ffffff"/>
+<rect x="40" y="55" width="1320" height="290" rx="10" fill="#eef4fb" stroke="#7a9cc6" stroke-width="1.5" stroke-dasharray="6 4"/>
+<text x="50.0" y="73.0" font-family="Helvetica, Arial, sans-serif" font-size="12.5" fill="#1f2d3d" text-anchor="start" font-weight="bold">Layer 3 domain -- routed /30 links, OSPF 10 area 0 (point-to-point), ECMP</text>
+<rect x="40" y="365" width="1320" height="520" rx="10" fill="#eef7ea" stroke="#7fb069" stroke-width="1.5" stroke-dasharray="6 4"/>
+<text x="50.0" y="383.0" font-family="Helvetica, Arial, sans-serif" font-size="12.5" fill="#1f2d3d" text-anchor="start" font-weight="bold">Layer 2 domain -- 802.1Q trunks, native VLAN 999, Rapid-PVST+, LACP</text>
+<polyline points="420.0,125.0 420.0,330.0" fill="none" stroke="#333" stroke-width="1.6"/>
+<polyline points="420.0,125.0 980.0,330.0" fill="none" stroke="#333" stroke-width="1.6"/>
+<polyline points="980.0,125.0 420.0,330.0" fill="none" stroke="#333" stroke-width="1.6"/>
+<polyline points="980.0,125.0 980.0,330.0" fill="none" stroke="#333" stroke-width="1.6"/>
+<polyline points="420.0,125.0 980.0,125.0" fill="none" stroke="#333" stroke-width="1.6"/>
+<line x1="420.0" y1="333.5" x2="980.0" y2="333.5" stroke="#333" stroke-width="2.2"/>
+<line x1="420.0" y1="326.5" x2="980.0" y2="326.5" stroke="#333" stroke-width="2.2"/>
+<polyline points="420.0,330.0 700.0,600.0" fill="none" stroke="#1f77b4" stroke-width="2.0"/>
+<polyline points="980.0,330.0 700.0,600.0" fill="none" stroke="#d9711c" stroke-width="2.0"/>
+<polyline points="700.0,600.0 300.0,790.0" fill="none" stroke="#888" stroke-width="1.2"/>
+<polyline points="700.0,600.0 500.0,790.0" fill="none" stroke="#888" stroke-width="1.2"/>
+<polyline points="700.0,600.0 700.0,790.0" fill="none" stroke="#888" stroke-width="1.2"/>
+<polyline points="700.0,600.0 900.0,790.0" fill="none" stroke="#888" stroke-width="1.2"/>
+<polyline points="700.0,600.0 1100.0,790.0" fill="none" stroke="#888" stroke-width="1.2"/>
+<ellipse cx="420" cy="125" rx="23.0" ry="16.0" fill="#1d5d9b" stroke="#fff" stroke-width="1.5"/>
+<line x1="423" y1="125" x2="436.0" y2="125.0" stroke="#fff" stroke-width="2.2"/>
+<line x1="417" y1="125" x2="404.0" y2="125.0" stroke="#fff" stroke-width="2.2"/>
+<line x1="420" y1="127" x2="420.0" y2="136.0" stroke="#fff" stroke-width="2.2"/>
+<line x1="420" y1="123" x2="420.0" y2="114.0" stroke="#fff" stroke-width="2.2"/>
+<circle cx="420" cy="125" r="2.5" fill="#fff"/>
+<ellipse cx="980" cy="125" rx="23.0" ry="16.0" fill="#1d5d9b" stroke="#fff" stroke-width="1.5"/>
+<line x1="983" y1="125" x2="996.0" y2="125.0" stroke="#fff" stroke-width="2.2"/>
+<line x1="977" y1="125" x2="964.0" y2="125.0" stroke="#fff" stroke-width="2.2"/>
+<line x1="980" y1="127" x2="980.0" y2="136.0" stroke="#fff" stroke-width="2.2"/>
+<line x1="980" y1="123" x2="980.0" y2="114.0" stroke="#fff" stroke-width="2.2"/>
+<circle cx="980" cy="125" r="2.5" fill="#fff"/>
+<rect x="397.0" y="310.0" width="46" height="40" rx="4" fill="#1d5d9b" stroke="#fff" stroke-width="1.5"/>
+<line x1="420" y1="330" x2="434.0" y2="342.0" stroke="#fff" stroke-width="2"/>
+<line x1="420" y1="330" x2="406.0" y2="318.0" stroke="#fff" stroke-width="2"/>
+<line x1="420" y1="330" x2="434.0" y2="318.0" stroke="#fff" stroke-width="2"/>
+<line x1="420" y1="330" x2="406.0" y2="342.0" stroke="#fff" stroke-width="2"/>
+<rect x="957.0" y="310.0" width="46" height="40" rx="4" fill="#1d5d9b" stroke="#fff" stroke-width="1.5"/>
+<line x1="980" y1="330" x2="994.0" y2="342.0" stroke="#fff" stroke-width="2"/>
+<line x1="980" y1="330" x2="966.0" y2="318.0" stroke="#fff" stroke-width="2"/>
+<line x1="980" y1="330" x2="994.0" y2="318.0" stroke="#fff" stroke-width="2"/>
+<line x1="980" y1="330" x2="966.0" y2="342.0" stroke="#fff" stroke-width="2"/>
+<rect x="673.0" y="585.0" width="54" height="30" rx="4" fill="#2e8b8b" stroke="#fff" stroke-width="1.5"/>
+<line x1="682.0" y1="595" x2="718.0" y2="595" stroke="#fff" stroke-width="2"/>
+<path d="M718.0,595 l-6,-4 l0,8 z" fill="#fff"/>
+<line x1="682.0" y1="605" x2="718.0" y2="605" stroke="#fff" stroke-width="2"/>
+<path d="M682.0,605 l6,-4 l0,8 z" fill="#fff"/>
+<rect x="282.0" y="773.0" width="36" height="23.12" rx="2" fill="#555f6d"/>
+<rect x="286.0" y="777.0" width="28" height="15.120000000000001" fill="#cfe3f5"/>
+<rect x="296" y="796.12" width="8" height="6.12" fill="#555f6d"/>
+<rect x="288.0" y="801.56" width="24.0" height="4" fill="#555f6d"/>
+<rect x="482.0" y="773.0" width="36" height="23.12" rx="2" fill="#555f6d"/>
+<rect x="486.0" y="777.0" width="28" height="15.120000000000001" fill="#cfe3f5"/>
+<rect x="496" y="796.12" width="8" height="6.12" fill="#555f6d"/>
+<rect x="488.0" y="801.56" width="24.0" height="4" fill="#555f6d"/>
+<rect x="682.0" y="773.0" width="36" height="23.12" rx="2" fill="#555f6d"/>
+<rect x="686.0" y="777.0" width="28" height="15.120000000000001" fill="#cfe3f5"/>
+<rect x="696" y="796.12" width="8" height="6.12" fill="#555f6d"/>
+<rect x="688.0" y="801.56" width="24.0" height="4" fill="#555f6d"/>
+<rect x="882.0" y="773.0" width="36" height="23.12" rx="2" fill="#555f6d"/>
+<rect x="886.0" y="777.0" width="28" height="15.120000000000001" fill="#cfe3f5"/>
+<rect x="896" y="796.12" width="8" height="6.12" fill="#555f6d"/>
+<rect x="888.0" y="801.56" width="24.0" height="4" fill="#555f6d"/>
+<rect x="1085.0" y="768.0" width="30" height="44" rx="3" fill="#555f6d"/>
+<line x1="1090.0" y1="777.0" x2="1110.0" y2="777.0" stroke="#fff" stroke-width="2"/>
+<line x1="1090.0" y1="787.0" x2="1110.0" y2="787.0" stroke="#fff" stroke-width="2"/>
+<line x1="1090.0" y1="797.0" x2="1110.0" y2="797.0" stroke="#fff" stroke-width="2"/>
+<rect x="404.4" y="159.0" width="31.2" height="14.0" rx="2" fill="#ffffff" fill-opacity="0.93"/>
+<text x="420.0" y="169.0" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#000" text-anchor="middle">Gi0/2</text>
+<rect x="404.4" y="282.0" width="31.2" height="14.0" rx="2" fill="#ffffff" fill-opacity="0.93"/>
+<text x="420.0" y="292.0" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#000" text-anchor="middle">Gi1/0</text>
+<rect x="379.8" y="220.2" width="80.5" height="14.5" rx="2" fill="#ffffff" fill-opacity="0.93" stroke="#333" stroke-width="0.8"/>
+<text x="420.0" y="230.8" font-family="Helvetica, Arial, sans-serif" font-size="9.5" fill="#333" text-anchor="middle">10.10.254.0/30</text>
+<rect x="516.4" y="159.0" width="31.2" height="14.0" rx="2" fill="#ffffff" fill-opacity="0.93"/>
+<text x="532.0" y="169.0" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#000" text-anchor="middle">Gi0/3</text>
+<rect x="852.4" y="282.0" width="31.2" height="14.0" rx="2" fill="#ffffff" fill-opacity="0.93"/>
+<text x="868.0" y="292.0" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#000" text-anchor="middle">Gi1/0</text>
+<rect x="547.8" y="179.2" width="80.5" height="14.5" rx="2" fill="#ffffff" fill-opacity="0.93" stroke="#333" stroke-width="0.8"/>
+<text x="588.0" y="189.8" font-family="Helvetica, Arial, sans-serif" font-size="9.5" fill="#333" text-anchor="middle">10.10.254.4/30</text>
+<rect x="852.4" y="159.0" width="31.2" height="14.0" rx="2" fill="#ffffff" fill-opacity="0.93"/>
+<text x="868.0" y="169.0" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#000" text-anchor="middle">Gi0/2</text>
+<rect x="516.4" y="282.0" width="31.2" height="14.0" rx="2" fill="#ffffff" fill-opacity="0.93"/>
+<text x="532.0" y="292.0" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#000" text-anchor="middle">Gi1/1</text>
+<rect x="771.8" y="179.2" width="80.5" height="14.5" rx="2" fill="#ffffff" fill-opacity="0.93" stroke="#333" stroke-width="0.8"/>
+<text x="812.0" y="189.8" font-family="Helvetica, Arial, sans-serif" font-size="9.5" fill="#333" text-anchor="middle">10.10.254.8/30</text>
+<rect x="964.4" y="159.0" width="31.2" height="14.0" rx="2" fill="#ffffff" fill-opacity="0.93"/>
+<text x="980.0" y="169.0" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#000" text-anchor="middle">Gi0/3</text>
+<rect x="964.4" y="282.0" width="31.2" height="14.0" rx="2" fill="#ffffff" fill-opacity="0.93"/>
+<text x="980.0" y="292.0" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#000" text-anchor="middle">Gi1/1</text>
+<rect x="937.1" y="220.2" width="85.8" height="14.5" rx="2" fill="#ffffff" fill-opacity="0.93" stroke="#333" stroke-width="0.8"/>
+<text x="980.0" y="230.8" font-family="Helvetica, Arial, sans-serif" font-size="9.5" fill="#333" text-anchor="middle">10.10.254.12/30</text>
+<rect x="516.4" y="118.0" width="31.2" height="14.0" rx="2" fill="#ffffff" fill-opacity="0.93"/>
+<text x="532.0" y="128.0" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#000" text-anchor="middle">Gi0/4</text>
+<rect x="852.4" y="118.0" width="31.2" height="14.0" rx="2" fill="#ffffff" fill-opacity="0.93"/>
+<text x="868.0" y="128.0" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#000" text-anchor="middle">Gi0/4</text>
+<rect x="657.1" y="117.8" width="85.8" height="14.5" rx="2" fill="#ffffff" fill-opacity="0.93" stroke="#333" stroke-width="0.8"/>
+<text x="700.0" y="128.2" font-family="Helvetica, Arial, sans-serif" font-size="9.5" fill="#333" text-anchor="middle">10.10.254.16/30</text>
+<rect x="511.4" y="323.0" width="41.3" height="14.0" rx="2" fill="#ffffff" fill-opacity="0.93"/>
+<text x="532.0" y="333.0" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#000" text-anchor="middle">Gi0/1-2</text>
+<rect x="847.4" y="323.0" width="41.3" height="14.0" rx="2" fill="#ffffff" fill-opacity="0.93"/>
+<text x="868.0" y="333.0" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#000" text-anchor="middle">Gi0/1-2</text>
+<rect x="617.2" y="317.0" width="165.6" height="26.0" rx="2" fill="#ffffff" fill-opacity="0.93" stroke="#333" stroke-width="0.8"/>
+<text x="700.0" y="327.5" font-family="Helvetica, Arial, sans-serif" font-size="9.5" fill="#333" text-anchor="middle">Po1 (LACP active)</text>
+<text x="700.0" y="339.0" font-family="Helvetica, Arial, sans-serif" font-size="9.5" fill="#333" text-anchor="middle">trunk 10,12,40,60,70,80,99,900</text>
+<rect x="447.8" y="371.5" width="56.4" height="25.0" rx="2" fill="#ffffff" fill-opacity="0.93"/>
+<text x="476.0" y="381.5" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#000" text-anchor="middle">Gi0/3</text>
+<text x="476.0" y="392.5" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#000" text-anchor="middle">root guard</text>
+<rect x="628.4" y="539.0" width="31.2" height="14.0" rx="2" fill="#ffffff" fill-opacity="0.93"/>
+<text x="644.0" y="549.0" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#000" text-anchor="middle">Gi0/1</text>
+<rect x="511.8" y="452.0" width="96.4" height="26.0" rx="2" fill="#ffffff" fill-opacity="0.93" stroke="#1f77b4" stroke-width="0.8"/>
+<text x="560.0" y="462.5" font-family="Helvetica, Arial, sans-serif" font-size="9.5" fill="#1f77b4" text-anchor="middle">FWD: 10,12,40,80</text>
+<text x="560.0" y="474.0" font-family="Helvetica, Arial, sans-serif" font-size="9.5" fill="#1f77b4" text-anchor="middle">ALT/BLK: 60,70,99</text>
+<rect x="895.8" y="371.5" width="56.4" height="25.0" rx="2" fill="#ffffff" fill-opacity="0.93"/>
+<text x="924.0" y="381.5" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#000" text-anchor="middle">Gi0/3</text>
+<text x="924.0" y="392.5" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#000" text-anchor="middle">root guard</text>
+<rect x="740.4" y="539.0" width="31.2" height="14.0" rx="2" fill="#ffffff" fill-opacity="0.93"/>
+<text x="756.0" y="549.0" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#000" text-anchor="middle">Gi0/2</text>
+<rect x="783.8" y="452.0" width="112.4" height="26.0" rx="2" fill="#ffffff" fill-opacity="0.93" stroke="#d9711c" stroke-width="0.8"/>
+<text x="840.0" y="462.5" font-family="Helvetica, Arial, sans-serif" font-size="9.5" fill="#d9711c" text-anchor="middle">FWD: 60,70,99</text>
+<text x="840.0" y="474.0" font-family="Helvetica, Arial, sans-serif" font-size="9.5" fill="#d9711c" text-anchor="middle">ALT/BLK: 10,12,40,80</text>
+<rect x="564.4" y="650.0" width="31.2" height="14.0" rx="2" fill="#ffffff" fill-opacity="0.93"/>
+<text x="580.0" y="660.0" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#000" text-anchor="middle">Gi1/0</text>
+<rect x="624.4" y="650.0" width="31.2" height="14.0" rx="2" fill="#ffffff" fill-opacity="0.93"/>
+<text x="640.0" y="660.0" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#000" text-anchor="middle">Gi1/1</text>
+<rect x="684.4" y="650.0" width="31.2" height="14.0" rx="2" fill="#ffffff" fill-opacity="0.93"/>
+<text x="700.0" y="660.0" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#000" text-anchor="middle">Gi1/2</text>
+<rect x="744.4" y="650.0" width="31.2" height="14.0" rx="2" fill="#ffffff" fill-opacity="0.93"/>
+<text x="760.0" y="660.0" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#000" text-anchor="middle">Gi1/3</text>
+<rect x="804.4" y="650.0" width="31.2" height="14.0" rx="2" fill="#ffffff" fill-opacity="0.93"/>
+<text x="820.0" y="660.0" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#000" text-anchor="middle">Gi2/0</text>
+<text x="391.0" y="123.0" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#111" text-anchor="end" font-weight="bold">HCM-EDG1</text>
+<text x="391.0" y="135.0" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#444" text-anchor="end">Lo0 10.10.255.1</text>
+<text x="1009.0" y="123.0" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#111" text-anchor="start" font-weight="bold">HCM-EDG2</text>
+<text x="1009.0" y="135.0" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#444" text-anchor="start">Lo0 10.10.255.2</text>
+<text x="391.0" y="328.0" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#111" text-anchor="end" font-weight="bold">HCM-CORE1</text>
+<text x="391.0" y="340.0" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#444" text-anchor="end">Lo0 10.10.255.3</text>
+<text x="1009.0" y="328.0" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#111" text-anchor="start" font-weight="bold">HCM-CORE2</text>
+<text x="1009.0" y="340.0" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#444" text-anchor="start">Lo0 10.10.255.4</text>
+<text x="700.0" y="628.0" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#111" text-anchor="middle" font-weight="bold">HCM-ACC1</text>
+<text x="700.0" y="640.0" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#444" text-anchor="middle">VLAN99 10.10.44.15, no ip routing</text>
+<text x="300.0" y="820.0" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#111" text-anchor="middle" font-weight="bold">HCM-EXEC</text>
+<text x="300.0" y="832.0" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#444" text-anchor="middle">V10 EXEC 10.10.32.0/24</text>
+<text x="300.0" y="844.0" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#444" text-anchor="middle">+ voice V40</text>
+<text x="500.0" y="820.0" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#111" text-anchor="middle" font-weight="bold">HCM-CORP</text>
+<text x="500.0" y="832.0" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#444" text-anchor="middle">V12 CORP 10.10.0.0/24</text>
+<text x="500.0" y="844.0" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#444" text-anchor="middle">+ voice V40</text>
+<text x="700.0" y="820.0" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#111" text-anchor="middle" font-weight="bold">HCM-GUEST</text>
+<text x="700.0" y="832.0" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#444" text-anchor="middle">V60 GUEST 10.10.36.0/24</text>
+<text x="700.0" y="844.0" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#444" text-anchor="middle">ACL-GUEST-IN</text>
+<text x="900.0" y="820.0" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#111" text-anchor="middle" font-weight="bold">HCM-PHONE</text>
+<text x="900.0" y="832.0" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#444" text-anchor="middle">V40 VOICE 10.10.16.0/24</text>
+<text x="1100.0" y="825.0" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#111" text-anchor="middle" font-weight="bold">HCM-SRV1</text>
+<text x="1100.0" y="837.0" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#444" text-anchor="middle">V80 SERVERS 10.10.43.0/24</text>
+<text x="1100.0" y="849.0" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#444" text-anchor="middle">DHCP/DNS/NTP .10</text>
+<text x="700.0" y="30.0" font-family="Helvetica, Arial, sans-serif" font-size="17" fill="#1f2d3d" text-anchor="middle" font-weight="bold">HCM HQ campus -- Layer 3 / Layer 2 boundary, HSRP and STP alignment</text>
+<rect x="109.1" y="487.2" width="211.8" height="65.5" rx="2" fill="#ffffff" fill-opacity="0.93" stroke="#9aa7b5" stroke-width="0.8"/>
+<text x="215.0" y="498.8" font-family="Helvetica, Arial, sans-serif" font-size="10.5" fill="#1f2d3d" text-anchor="middle">HCM-CORE1</text>
+<text x="215.0" y="511.2" font-family="Helvetica, Arial, sans-serif" font-size="10.5" fill="#1f2d3d" text-anchor="middle">STP root (24576): 10,12,40,80,900</text>
+<text x="215.0" y="523.8" font-family="Helvetica, Arial, sans-serif" font-size="10.5" fill="#1f2d3d" text-anchor="middle">STP backup (28672): 60,70,99</text>
+<text x="215.0" y="536.2" font-family="Helvetica, Arial, sans-serif" font-size="10.5" fill="#1f2d3d" text-anchor="middle">HSRP active (prio 110): 10,12,40,80</text>
+<text x="215.0" y="548.8" font-family="Helvetica, Arial, sans-serif" font-size="10.5" fill="#1f2d3d" text-anchor="middle">SVIs .2 / ::2, VIP .1 / FE80::1</text>
+<rect x="1084.1" y="487.2" width="211.8" height="65.5" rx="2" fill="#ffffff" fill-opacity="0.93" stroke="#9aa7b5" stroke-width="0.8"/>
+<text x="1190.0" y="498.8" font-family="Helvetica, Arial, sans-serif" font-size="10.5" fill="#1f2d3d" text-anchor="middle">HCM-CORE2</text>
+<text x="1190.0" y="511.2" font-family="Helvetica, Arial, sans-serif" font-size="10.5" fill="#1f2d3d" text-anchor="middle">STP root (24576): 60,70,99</text>
+<text x="1190.0" y="523.8" font-family="Helvetica, Arial, sans-serif" font-size="10.5" fill="#1f2d3d" text-anchor="middle">STP backup (28672): 10,12,40,80,900</text>
+<text x="1190.0" y="536.2" font-family="Helvetica, Arial, sans-serif" font-size="10.5" fill="#1f2d3d" text-anchor="middle">HSRP active (prio 110): 60,70,99</text>
+<text x="1190.0" y="548.8" font-family="Helvetica, Arial, sans-serif" font-size="10.5" fill="#1f2d3d" text-anchor="middle">SVIs .3 / ::3, VIP .1 / FE80::1</text>
+<rect x="100.2" y="662.5" width="179.6" height="75.0" rx="2" fill="#ffffff" fill-opacity="0.93" stroke="#9aa7b5" stroke-width="0.8"/>
+<text x="190.0" y="673.5" font-family="Helvetica, Arial, sans-serif" font-size="10" fill="#222" text-anchor="middle">Access-port protection</text>
+<text x="190.0" y="685.5" font-family="Helvetica, Arial, sans-serif" font-size="10" fill="#222" text-anchor="middle">portfast + BPDU guard</text>
+<text x="190.0" y="697.5" font-family="Helvetica, Arial, sans-serif" font-size="10" fill="#222" text-anchor="middle">port-security (sticky, max 2-3)</text>
+<text x="190.0" y="709.5" font-family="Helvetica, Arial, sans-serif" font-size="10" fill="#222" text-anchor="middle">DHCP snooping (uplinks trusted)</text>
+<text x="190.0" y="721.5" font-family="Helvetica, Arial, sans-serif" font-size="10" fill="#222" text-anchor="middle">Dynamic ARP Inspection</text>
+<text x="190.0" y="733.5" font-family="Helvetica, Arial, sans-serif" font-size="10" fill="#222" text-anchor="middle">errdisable auto-recovery 120 s</text>
+</svg>

@@ -1,0 +1,5 @@
+# PC-DAD-LOG -- VLAN 30 LOGISTICS_OPS on DAD-ACC1 Gi1/0
+set pcname PC-DAD-LOG
+ip dhcp
+ip auto
+save

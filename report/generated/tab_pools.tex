@@ -1,0 +1,32 @@
+HCM & 12 CORP\_STAFF & \texttt{10.10.0.0/20} & 4{,}094 & 4{,}000 & 98\% & Corporate staff, 16 x /24 access blocks \\
+HCM & 40 VOICE & \texttt{10.10.16.0/20} & 4{,}094 & 3{,}500 & 85\% & IP phones / softphones \\
+HCM & 10 EXEC\_FINANCE & \texttt{10.10.32.0/22} & 1{,}022 & 600 & 59\% & Executives \& Finance \\
+HCM & 60 GUEST & \texttt{10.10.36.0/22} & 1{,}022 & 1{,}000 & 98\% & Guest Wi-Fi (Internet only) \\
+HCM & 20 RND\_ENGINEERING & \texttt{10.10.40.0/23} & 510 & 400 & 78\% & Engineers based at HQ \\
+HCM & 70 WLAN\_AP & \texttt{10.10.42.0/24} & 254 & 200 & 79\% & Access points (CAPWAP to WLC) \\
+HCM & 80 SERVERS & \texttt{10.10.43.0/24} & 254 & 120 & 47\% & Campus services (DHCP/DNS/NTP/WLC) \\
+HCM & 99 MANAGEMENT & \texttt{10.10.44.0/24} & 254 & 150 & 59\% & In-band device management \\
+HCM & 50 IOT\_DEVICES & \texttt{10.10.48.0/20} & 4{,}094 & 2{,}000 & 49\% & HQ IoT (cameras, badge readers, BMS) \\
+HCM & DC & \texttt{10.10.128.0/18} & 16{,}382 & -- & -- & Data-centre EVPN-VXLAN fabric (tenants, underlay, VTEPs) \\
+HCM & INFRA & \texttt{10.10.254.0/24} & 254 & -- & -- & Point-to-point links (/30) \\
+HCM & LOOP & \texttt{10.10.255.0/24} & 254 & -- & -- & Router/switch loopbacks (/32) \\
+HAN & 20 RND\_ENGINEERING & \texttt{10.20.0.0/20} & 4{,}094 & 3{,}500 & 85\% & R\&D engineers, 16 x /24 access blocks \\
+HAN & 40 VOICE & \texttt{10.20.16.0/21} & 2{,}046 & 2{,}000 & 98\% & IP phones \\
+HAN & 60 GUEST & \texttt{10.20.24.0/22} & 1{,}022 & 600 & 59\% & Guest Wi-Fi \\
+HAN & 10 EXEC\_FINANCE & \texttt{10.20.28.0/23} & 510 & 300 & 59\% & Site management \& admin \\
+HAN & 70 WLAN\_AP & \texttt{10.20.30.0/24} & 254 & 150 & 59\% & Access points \\
+HAN & 99 MANAGEMENT & \texttt{10.20.31.0/24} & 254 & 100 & 39\% & In-band device management \\
+HAN & 50 IOT\_DEVICES & \texttt{10.20.32.0/20} & 4{,}094 & 1{,}500 & 37\% & Lab IoT / sensors \\
+HAN & AI & \texttt{10.20.64.0/18} & 16{,}382 & -- & -- & AI-lab GPU cluster / private cloud fabric \\
+HAN & INFRA & \texttt{10.20.254.0/24} & 254 & -- & -- & Point-to-point links \\
+HAN & LOOP & \texttt{10.20.255.0/24} & 254 & -- & -- & Loopbacks \\
+DAD & 50 IOT\_DEVICES & \texttt{10.30.0.0/17} & 32{,}766 & 25{,}000 & 76\% & Warehouse IoT: scanners, AGVs, trackers (128 x /24 zones) \\
+DAD & 30 LOGISTICS\_OPS & \texttt{10.30.128.0/21} & 2{,}046 & 1{,}200 & 59\% & Logistics operations staff \\
+DAD & 40 VOICE & \texttt{10.30.136.0/22} & 1{,}022 & 800 & 78\% & IP phones \\
+DAD & 60 GUEST & \texttt{10.30.140.0/23} & 510 & 300 & 59\% & Guest / driver Wi-Fi \\
+DAD & 70 WLAN\_AP & \texttt{10.30.142.0/23} & 510 & 400 & 78\% & Wi-Fi 6/7 access points (dense warehouse) \\
+DAD & 99 MANAGEMENT & \texttt{10.30.144.0/24} & 254 & 100 & 39\% & In-band device management \\
+DAD & INFRA & \texttt{10.30.254.0/24} & 254 & -- & -- & Point-to-point links \\
+DAD & LOOP & \texttt{10.30.255.0/24} & 254 & -- & -- & Loopbacks \\
+WAN & OVERLAY & \texttt{10.0.0.0/24} & 254 & -- & -- & IPsec/GRE overlay tunnels (/30) \\
+WAN & ZTNA & \texttt{10.0.64.0/18} & 16{,}382 & -- & -- & SASE/ZTNA remote-user pool (design) \\

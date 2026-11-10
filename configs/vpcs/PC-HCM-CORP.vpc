@@ -1,0 +1,5 @@
+# PC-HCM-CORP -- VLAN 12 CORP_STAFF on HCM-ACC1 Gi1/1
+set pcname PC-HCM-CORP
+ip dhcp
+ip auto
+save

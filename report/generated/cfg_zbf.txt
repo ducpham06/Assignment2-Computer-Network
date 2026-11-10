@@ -1,0 +1,36 @@
+zone security INSIDE
+ description LAN, site interconnects and overlay tunnels
+zone security OUTSIDE
+ description ISP transport (untrusted)
+!
+class-map type inspect match-any CM-INSIDE-TO-OUTSIDE
+ match protocol tcp
+ match protocol udp
+ match protocol icmp
+policy-map type inspect PM-INSIDE-TO-OUTSIDE
+ class type inspect CM-INSIDE-TO-OUTSIDE
+  inspect
+ class class-default
+  drop log
+!
+ip access-list extended ACL-OUTSIDE-TO-SELF
+ remark Control plane allowed from the ISP: IKE/IPsec, GRE, BGP, ICMP
+ permit udp any any eq isakmp
+ permit udp any any eq non500-isakmp
+ permit esp any any
+ permit gre any any
+ permit tcp any any eq bgp
+ permit tcp any eq bgp any
+ permit icmp any any
+class-map type inspect match-any CM-OUTSIDE-TO-SELF
+ match access-group name ACL-OUTSIDE-TO-SELF
+policy-map type inspect PM-OUTSIDE-TO-SELF
+ class type inspect CM-OUTSIDE-TO-SELF
+  pass
+ class class-default
+  drop log
+!
+zone-pair security ZP-INSIDE-OUTSIDE source INSIDE destination OUTSIDE
+ service-policy type inspect PM-INSIDE-TO-OUTSIDE
+zone-pair security ZP-OUTSIDE-SELF source OUTSIDE destination self
+ service-policy type inspect PM-OUTSIDE-TO-SELF

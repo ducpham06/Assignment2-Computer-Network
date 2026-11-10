@@ -1,0 +1,5 @@
+# PC-HCM-EXEC -- VLAN 10 EXEC_FINANCE on HCM-ACC1 Gi1/0
+set pcname PC-HCM-EXEC
+ip dhcp
+ip auto
+save

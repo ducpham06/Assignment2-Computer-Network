@@ -1,0 +1,10 @@
+ip access-list extended ACL-EXEC-PROTECT
+ remark Applied OUT on Vlan10: only servers, management and replies may enter the Executive VLAN
+ permit tcp any 10.10.32.0 0.0.0.255 established
+ permit ip 10.10.43.0 0.0.0.255 10.10.32.0 0.0.0.255
+ permit ip 10.10.44.0 0.0.0.255 10.10.32.0 0.0.0.255
+ permit icmp any 10.10.32.0 0.0.0.255 echo-reply
+ permit icmp any 10.10.32.0 0.0.0.255 unreachable
+ permit icmp any 10.10.32.0 0.0.0.255 time-exceeded
+ deny   ip 10.0.0.0 0.255.255.255 10.10.32.0 0.0.0.255 log
+ permit ip any any

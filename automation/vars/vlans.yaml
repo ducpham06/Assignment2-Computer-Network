@@ -1,0 +1,16 @@
+# VLAN payload pushed to every core/access switch (roles: core, access).
+# standard_vlans go everywhere; site_vlans are added only at that site.
+
+standard_vlans:
+  - {id: 10, name: EXEC_FINANCE}
+  - {id: 20, name: RND_ENGINEERING}
+  - {id: 30, name: LOGISTICS_OPS}
+  - {id: 99, name: MANAGEMENT}
+
+site_vlans:
+  HCM: []
+  HAN: []
+  DAD: []
+  # Demo idea (live): provision a new AI training VLAN in Hanoi without touching the CLI
+  # HAN:
+  #   - {id: 25, name: AI_TRAINING}

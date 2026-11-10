@@ -1,0 +1,5 @@
+# PC-HAN-ENG -- VLAN 20 RND_ENGINEERING on HAN-ACC1 Gi1/0
+set pcname PC-HAN-ENG
+ip dhcp
+ip auto
+save
