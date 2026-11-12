@@ -1,0 +1,4 @@
+# DC-H4 -- DC host on DC-LEAF2 Gi0/4 (VRF TENANT-DEV)
+set pcname DC-H4
+ip 10.10.131.14/24 10.10.131.1
+save

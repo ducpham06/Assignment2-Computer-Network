@@ -163,7 +163,7 @@ def parse_ios(path):
 
 
 C = {}
-for p in sorted(glob.glob(os.path.join(ROOT, "configs", "labA", "*.cfg"))):
+for p in sorted(glob.glob(os.path.join(ROOT, "configs", "lab[AB]", "*.cfg"))):
     c = parse_ios(p)
     C[c["dev"]] = c
 
@@ -371,43 +371,58 @@ for d, c in C.items():
             bad.append((d, ifn))
 check("ZBF: every data-plane interface of every WAN edge is in a security zone", not bad, str(bad))
 
-# ---------------------------------------------------------------- 9. Lab B (EOS)
-eos = {os.path.basename(p)[:-4]: open(p).read() for p in glob.glob(os.path.join(ROOT, "configs", "labB", "*.cfg"))}
+# ---------------------------------------------------------------- 9. DC fabric (MPLS L3VPN on vIOS)
 bad = []
-for s, sif, lf, lif, net in sot.DC["fabric_links"]:
-    a = re.search(rf"interface {sif}\n(?:   .*\n)*?   ip address (\S+)", eos[s]).group(1)
-    b = re.search(rf"interface {lif}\n(?:   .*\n)*?   ip address (\S+)", eos[lf]).group(1)
-    if ip.ip_interface(a).network != ip.ip_interface(b).network or a == b:
-        bad.append((s, lf))
-lo = {d: re.search(r"interface Loopback0\n(?:   .*\n)*?   ip address (\S+)/32", t).group(1) for d, t in eos.items()}
-for d, t in eos.items():
-    for n in re.findall(r"neighbor (\d+\.\d+\.\d+\.\d+) peer group", t):
-        if n not in lo.values():
-            bad.append((d, n, "EVPN peer loopback unknown"))
-vnis = {d: sorted(re.findall(r"vxlan vlan (\d+) vni (\d+)", t)) for d, t in eos.items() if "Vxlan1" in t}
-if len({str(v) for v in vnis.values()}) != 1:
-    bad.append(("VNI map differs", vnis))
-check("DC fabric: fabric /31s match, EVPN peers are real loopbacks, VLAN-VNI map identical on all leaves",
+for sp, sif, lf, lif, net in sot.DC["fabric_links"]:
+    A, B = C[sp]["ifs"].get(sot.full_if(sif)), C[lf]["ifs"].get(sot.full_if(lif))
+    if not A or not B or A["v4"].network != B["v4"].network or A["v4"].ip == B["v4"].ip:
+        bad.append((sp, lf, "subnet"))
+        continue
+    for dev, I in ((sp, A), (lf, B)):
+        if I["ospf"] != 1 or "mpls ip" not in I["lines"]:
+            bad.append((dev, "ospf 1 / mpls ip missing"))
+leaves = [n for n, d in sot.DEVICES.items() if d["role"] == "leaf"]
+for v in sot.DC["vrfs"]:
+    rts = set()
+    for lf in leaves:
+        t = C[lf]["text"]
+        m = re.search(rf"vrf definition {v['name']}\n(?: .*\n)*?  route-target export (\S+)\n  route-target import (\S+)", t)
+        if not m or m.group(1) != m.group(2):
+            bad.append((lf, v["name"], "RT"))
+        else:
+            rts.add(m.group(1))
+        if f"address-family ipv4 vrf {v['name']}" not in t:
+            bad.append((lf, v["name"], "no BGP VRF address-family"))
+    if len(rts) != 1:
+        bad.append((v["name"], "route-targets differ between leaves", rts))
+for lf, lif, h, vrf, net, hip in sot.DC["hosts"]:
+    I = C[lf]["ifs"].get(sot.full_if(lif))
+    if not I or f"vrf forwarding {vrf}" not in I["lines"] or ip.ip_address(hip) not in I["v4"].network:
+        bad.append((lf, lif, h, "host gateway/VRF"))
+all_rt = [re.findall(r"route-target export (\S+)", C[lf]["text"]) for lf in leaves]
+if any(len(set(x)) != len(x) for x in all_rt):
+    bad.append(("two VRFs share a route-target -> tenants would leak",))
+check("DC fabric: /30s match, OSPF+LDP on every fabric link, per-tenant RTs identical on both leaves and unique per tenant",
       not bad, str(bad))
 
 # ---------------------------------------------------------------- 10. DC border
 bad = []
 for core, cif, leaf, lif, net in sot.BORDER_LINKS:
-    I = C[core]["ifs"].get(sot.full_if(cif))
-    m = re.search(rf"interface {lif}\n(?:   .*\n)*?   ip address (\S+)", eos[leaf])
-    vrf = re.search(rf"interface {lif}\n(?:   .*\n)*?   vrf (\S+)", eos[leaf])
-    if not I or not m or I["v4"].network != ip.ip_interface(m.group(1)).network:
+    I, J = C[core]["ifs"].get(sot.full_if(cif)), C[leaf]["ifs"].get(sot.full_if(lif))
+    if not I or not J or I["v4"].network != J["v4"].network:
         bad.append((core, leaf, "subnet"))
-    elif I["ospf"] != sot.SITES["HCM"]["ospf"] or sot.full_if(cif) not in C[core]["no_passive"]["v4"]:
+        continue
+    if I["ospf"] != sot.SITES["HCM"]["ospf"] or sot.full_if(cif) not in C[core]["no_passive"]["v4"]:
         bad.append((core, "ospf"))
-    if not vrf or vrf.group(1) != sot.DC["vrf"] or f"router ospf 11 vrf {sot.DC['vrf']}" not in eos[leaf]:
+    if f"vrf forwarding {sot.DC['vrf']}" not in J["lines"] or J["ospf"] != 11 or \
+            f"router ospf 11 vrf {sot.DC['vrf']}" not in C[leaf]["text"]:
         bad.append((leaf, "vrf/ospf"))
-check("DC border: core and leaf share each /30, core runs OSPF 10 non-passive, leaf runs OSPF in the tenant VRF",
+check("DC border: core and leaf share each /30, core runs OSPF 10 non-passive, leaf runs OSPF 11 in the PROD VRF",
       not bad, str(bad))
 
 # ---------------------------------------------------------------- 11. RAM budget
 ram = sum(sot.RAM_MB[d["platform"]] for d in sot.DEVICES.values())
-check(f"RAM budget: whole topology = {ram / 1024:.1f} GB of node RAM -- fits a 32 GB host with headroom",
+check(f"RAM budget: whole topology = {ram / 1024:.1f} GB of node RAM -- fits a 16 GB host, comfortable on 32 GB",
       ram <= 24 * 1024)
 
 # ---------------------------------------------------------------- report

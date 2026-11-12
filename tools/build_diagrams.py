@@ -73,7 +73,7 @@ def logical():
     s.node("HWLC", "server", 735, 800, "WLC / DHCP", ["DNS / NTP"])
     for n in ("HAP", "HEX", "HWLC"):
         s.link(n, "HACC", GRY, 1)
-    s.group(810, 640, 285, 240, "DC fabric: EVPN-VXLAN", "#ffffff", "#7a9cc6", dashed=False, sub="spine-leaf, OSPF underlay, iBGP EVPN")
+    s.group(810, 640, 285, 240, "DC fabric: spine-leaf", "#ffffff", "#7a9cc6", dashed=False, sub="OSPF underlay, BGP overlay, tenant VRFs")
     s.node("SP1", "l3switch", 885, 705, "Spine1", size=(38, 32))
     s.node("SP2", "l3switch", 1020, 705, "Spine2", size=(38, 32))
     s.node("LF1", "l3switch", 885, 800, "Leaf1", size=(38, 32))
@@ -263,38 +263,37 @@ def hcm_detail():
 # =========================================================================== 5. DC fabric
 def dc():
     s = Scene(1400, 800)
-    s.text(700, 30, "HQ data-centre fabric: OSPF underlay, iBGP EVPN overlay, VXLAN data plane, border to the campus core",
-           16, "#1f2d3d", True, "middle")
-    s.group(240, 55, 920, 200, "Spine layer -- EVPN route reflectors (AS 65011)", "#eef4fb", "#7a9cc6")
-    s.group(240, 290, 920, 480, "Leaf layer -- VTEPs, anycast gateway (VRF TENANT-PROD, L3VNI 50001)", "#eef7ea", "#7fb069")
+    s.text(700, 30, "HQ data-centre fabric (lab): OSPF + LDP underlay, MP-BGP VPNv4 overlay, tenant VRFs, border to the campus core",
+           15.5, "#1f2d3d", True, "middle")
+    s.group(240, 55, 920, 200, "Spine layer -- P routers + VPNv4 route reflectors (AS 65011)", "#eef4fb", "#7a9cc6")
+    s.group(240, 290, 920, 480, "Leaf layer -- PE routers: VRF TENANT-PROD (RT 65011:100), VRF TENANT-DEV (RT 65011:200)",
+            "#eef7ea", "#7fb069")
     s.group(15, 290, 205, 300, "HQ campus", "#f4f5f7", "#9aa7b5", sub="OSPF 10 area 0")
     s.group(1180, 290, 205, 300, "HQ campus", "#f4f5f7", "#9aa7b5", sub="OSPF 10 area 0")
-    s.node("DC-SPINE1", "l3switch", 450, 150, "DC-SPINE1", ["Lo0 10.10.191.1"], label_pos="left")
-    s.node("DC-SPINE2", "l3switch", 950, 150, "DC-SPINE2", ["Lo0 10.10.191.2"], label_pos="right")
-    s.node("DC-LEAF1", "l3switch", 450, 420, "DC-LEAF1", ["Lo0 10.10.191.11", "VTEP Lo1 10.10.191.21"])
-    s.node("DC-LEAF2", "l3switch", 950, 420, "DC-LEAF2", ["Lo0 10.10.191.12", "VTEP Lo1 10.10.191.22"])
+    s.node("DC-SPINE1", "router", 450, 150, "DC-SPINE1", ["Lo0 10.10.191.1"], label_pos="left")
+    s.node("DC-SPINE2", "router", 950, 150, "DC-SPINE2", ["Lo0 10.10.191.2"], label_pos="right")
+    s.node("DC-LEAF1", "router", 450, 420, "DC-LEAF1", ["Lo0 10.10.191.11"])
+    s.node("DC-LEAF2", "router", 950, 420, "DC-LEAF2", ["Lo0 10.10.191.12"])
     s.node("HCM-CORE1", "l3switch", 117, 420, "HCM-CORE1")
     s.node("HCM-CORE2", "l3switch", 1283, 420, "HCM-CORE2")
     for sp, sif, lf, lif, net in sot.DC["fabric_links"]:
         cross = (sp, lf) in (("DC-SPINE1", "DC-LEAF2"), ("DC-SPINE2", "DC-LEAF1"))
-        s.link(sp, lf, "#333", 1.8, la=sif.replace("Ethernet", "Eth"), lb=lif.replace("Ethernet", "Eth"), mid=net, font=9,
-               mid_t=0.3 if cross else 0.5)
+        s.link(sp, lf, "#333", 1.8, la=sif, lb=lif, mid=net, font=9, mid_t=0.3 if cross else 0.5)
     for core, cif, lf, lif, net in sot.BORDER_LINKS:
-        s.link(core, lf, "#2e8540", 2.0, la=cif, lb=lif.replace("Ethernet", "Eth"), mid=f"{net}\nOSPF (VRF on leaf)", font=8.5,
-               la_t=0.18, lb_t=0.8)
-    s.link("DC-LEAF1", "DC-LEAF2", "#7b3fa0", 2.2, "8 4", mid="VXLAN (UDP 4789)\nL2VNI 10110 / 10120, L3VNI 50001", font=9.5)
-    hosts = {"DC-H1": 300, "DC-H2": 720, "DC-H3": 1110}
-    for lf, lif, h, vlan, hip in sot.DC["hosts"]:
-        s.node(h, "server", hosts[h], 670, h, [f"VLAN {vlan} {hip}", "GW 10.10.%d.1 (anycast)" % (128 if vlan == 110 else 129)])
-        s.link(lf, h, "#888", 1.3, la=lif.replace("Ethernet", "Eth"), la_t=0.45)
-    s.text(620, 560, "H1 <-> H2: same subnet across leaves (EVPN type-2, L2VNI 10110)\n"
-           "H1 <-> H3: routed between subnets (symmetric IRB via L3VNI 50001)\n"
-           "H1 <-> campus/branches: leaf -> HCM core via OSPF in the tenant VRF", 10.5, "#222", box="#ffffff")
+        s.link(core, lf, "#2e8540", 2.0, la=cif, lb=lif, mid=f"{net}\nOSPF 11 in VRF PROD", font=8.5, la_t=0.18, lb_t=0.8)
+    s.link("DC-LEAF1", "DC-LEAF2", "#7b3fa0", 2.2, "8 4", mid="MPLS LSP via either spine\nVPN label per tenant", font=9.5)
+    pos = {"DC-H1": 300, "DC-H3": 560, "DC-H2": 840, "DC-H4": 1100}
+    for lf, lif, h, vrf, net, hip in sot.DC["hosts"]:
+        s.node(h, "server", pos[h], 670, h, [f"{vrf}", f"{hip} (GW .1)"])
+        s.link(lf, h, "#1f77b4" if vrf.endswith("PROD") else "#d9711c", 1.4, la=lif, la_t=0.4)
+    s.text(700, 565, "H1 <-> H2 (PROD) and H3 <-> H4 (DEV): routed across the fabric by MP-BGP VPNv4\n"
+           "H1 <-> H3: blocked -- different VRFs, no shared route-target\n"
+           "PROD <-> campus/branches: leaf -> HCM core via OSPF in VRF PROD; DEV has no border", 10.5, "#222", box="#ffffff")
     return s
 
 
 SCENES = {"01-logical-architecture": logical, "02-labA-physical": physical, "03-routing-overlay": routing,
-          "04-hcm-l2-l3": hcm_detail, "05-dc-evpn-fabric": dc}
+          "04-hcm-l2-l3": hcm_detail, "05-dc-fabric": dc}
 
 if __name__ == "__main__":
     for name, fn in SCENES.items():

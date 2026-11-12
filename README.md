@@ -11,7 +11,7 @@ Design, configurations, automation and report for the TechViet Innovations three
 | `diagrams/*.drawio` (+ `.pdf/.png/.svg`) | Logical, physical, routing, HCM L2/L3, DC fabric diagrams — open the `.drawio` in diagrams.net to edit | 1 |
 | `ip-plan/TVI_IP_Plan.xlsx`, `ip_plan.md` | VLSM IPv4 + hierarchical IPv6 plan | 2 |
 | `configs/labA/*.cfg` | 14 paste-ready campus/WAN configs (vIOS / IOSvL2): VLANs, LACP, RSTP, HSRPv2, DHCP relay, OSPFv2/v3, BGP, GRE/IPsec, ZBF, NAT, ACLs, DHCP snooping/DAI, QoS | 3–8 |
-| `configs/labB/*.cfg` | 4 Arista vEOS configs: EVPN-VXLAN spine-leaf + border OSPF to the HQ cores | 6 |
+| `configs/labB/*.cfg` | 4 vIOS DC-fabric configs: OSPF + LDP underlay, MP-BGP VPNv4 overlay, tenant VRFs, border OSPF to the HQ cores | 6 |
 | `configs/vpcs/*.vpc` | VPCS host settings | — |
 | `automation/` | Python/Netmiko: inventory, getpass/env credentials, baseline + VLAN push, backups, diff, compliance, telemetry, tests | 9 |
 | `docs/eve-ng-build-guide.md` | Node list + full cabling table + build order | — |
@@ -20,9 +20,9 @@ Design, configurations, automation and report for the TechViet Innovations three
 
 ## Host
 
-One EVE-NG topology: 14 Cisco nodes (campus + WAN) + 4 vEOS (DC fabric, both spines, border links to
-the HQ cores) + 13 VPCS, about 16 GB of node RAM. Reference host: Core Ultra 5 125H, 32 GB — give the
-EVE-NG VM 24 GB and 12 vCPUs. (`configs/labA` = campus/WAN, `configs/labB` = DC fabric; same lab.)
+One EVE-NG topology, vIOS family only: 18 Cisco nodes (14 campus/WAN + 4 DC fabric) + 14 VPCS,
+about 11.5 GB of node RAM — runs on a 16 GB host; on the 32 GB reference laptop give the EVE-NG VM
+24 GB and 12 vCPUs. (`configs/labA` = campus/WAN, `configs/labB` = DC fabric; same lab.)
 
 ## Regenerate everything after changing the design
 

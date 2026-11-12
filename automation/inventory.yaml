@@ -93,25 +93,25 @@ devices:
     lab: A
   - hostname: DC-SPINE1
     ip: 172.16.99.41
-    device_type: arista_eos
+    device_type: cisco_ios
     site: HCM
     role: spine
     lab: B
   - hostname: DC-SPINE2
     ip: 172.16.99.42
-    device_type: arista_eos
+    device_type: cisco_ios
     site: HCM
     role: spine
     lab: B
   - hostname: DC-LEAF1
     ip: 172.16.99.43
-    device_type: arista_eos
+    device_type: cisco_ios
     site: HCM
     role: leaf
     lab: B
   - hostname: DC-LEAF2
     ip: 172.16.99.44
-    device_type: arista_eos
+    device_type: cisco_ios
     site: HCM
     role: leaf
     lab: B

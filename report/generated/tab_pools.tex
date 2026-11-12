@@ -7,7 +7,7 @@ HCM & 70 WLAN\_AP & \texttt{10.10.42.0/24} & 254 & 200 & 79\% & Access points (C
 HCM & 80 SERVERS & \texttt{10.10.43.0/24} & 254 & 120 & 47\% & Campus services (DHCP/DNS/NTP/WLC) \\
 HCM & 99 MANAGEMENT & \texttt{10.10.44.0/24} & 254 & 150 & 59\% & In-band device management \\
 HCM & 50 IOT\_DEVICES & \texttt{10.10.48.0/20} & 4{,}094 & 2{,}000 & 49\% & HQ IoT (cameras, badge readers, BMS) \\
-HCM & DC & \texttt{10.10.128.0/18} & 16{,}382 & -- & -- & Data-centre EVPN-VXLAN fabric (tenants, underlay, VTEPs) \\
+HCM & DC & \texttt{10.10.128.0/18} & 16{,}382 & -- & -- & Data-centre spine-leaf fabric (tenant subnets, underlay, loopbacks) \\
 HCM & INFRA & \texttt{10.10.254.0/24} & 254 & -- & -- & Point-to-point links (/30) \\
 HCM & LOOP & \texttt{10.10.255.0/24} & 254 & -- & -- & Router/switch loopbacks (/32) \\
 HAN & 20 RND\_ENGINEERING & \texttt{10.20.0.0/20} & 4{,}094 & 3{,}500 & 85\% & R\&D engineers, 16 x /24 access blocks \\

@@ -10,8 +10,8 @@
 <text x="1150.0" y="378.0" font-family="Helvetica, Arial, sans-serif" font-size="12.5" fill="#1f2d3d" text-anchor="start" font-weight="bold">Da Nang Logistics Hub  (AS 65030)</text>
 <text x="1150.0" y="392.0" font-family="Helvetica, Arial, sans-serif" font-size="9.5" fill="#3d4f63" text-anchor="start" font-style="italic">500 users + 10k IoT | 10.30.0.0/16 | 2001:db8:a030::/48</text>
 <rect x="810" y="640" width="285" height="240" rx="10" fill="#ffffff" stroke="#7a9cc6" stroke-width="1.5"/>
-<text x="820.0" y="658.0" font-family="Helvetica, Arial, sans-serif" font-size="12.5" fill="#1f2d3d" text-anchor="start" font-weight="bold">DC fabric: EVPN-VXLAN</text>
-<text x="820.0" y="672.0" font-family="Helvetica, Arial, sans-serif" font-size="9.5" fill="#3d4f63" text-anchor="start" font-style="italic">spine-leaf, OSPF underlay, iBGP EVPN</text>
+<text x="820.0" y="658.0" font-family="Helvetica, Arial, sans-serif" font-size="12.5" fill="#1f2d3d" text-anchor="start" font-weight="bold">DC fabric: spine-leaf</text>
+<text x="820.0" y="672.0" font-family="Helvetica, Arial, sans-serif" font-size="9.5" fill="#3d4f63" text-anchor="start" font-style="italic">OSPF underlay, BGP overlay, tenant VRFs</text>
 <polyline points="1515.0,230.0 1330.0,120.0" fill="none" stroke="#2e8540" stroke-width="1.6" stroke-dasharray="5 3"/>
 <polyline points="1330.0,120.0 800.0,110.0" fill="none" stroke="#6b7785" stroke-width="1.4"/>
 <polyline points="470.0,265.0 800.0,110.0" fill="none" stroke="#6b7785" stroke-width="1.4"/>

@@ -37,7 +37,7 @@ python3 tvi_auto.py --task all                     # pre-backup -> push -> write
 python3 tvi_auto.py --task all --site HAN --role access
 python3 tvi_auto.py --task verify                  # VLAN compliance only
 python3 tvi_auto.py --task telemetry --role edge core
-python3 tvi_auto.py --task telemetry --lab B       # vEOS fabric: EVPN peers + VTEPs (vEOS is backup/telemetry only)
+python3 tvi_auto.py --task telemetry --lab B       # DC fabric: OSPF, LDP neighbours, VPNv4 sessions
 ```
 
 Exit code is 1 if any device failed, so the script can run from cron/CI.

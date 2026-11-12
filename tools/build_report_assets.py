@@ -67,7 +67,7 @@ w("tab_links.tex", "\n".join(rows))
 
 # ---------------------------------------------------------------- devices / RAM
 rows, ram = [], {"A": 0, "B": 0}
-img = {"vios": "vIOS", "viosl2": "IOSvL2", "veos": "vEOS-lab"}
+img = {"vios": "vIOS", "viosl2": "IOSvL2"}
 for n, d in sot.DEVICES.items():
     lo6 = sot.lo0_v6(n) if d["lab"] == "A" and d.get("lo0") and d["role"] != "isp" else "--"
     rows.append(f"{tex(n)} & {'DC' if d['lab'] == 'B' else 'C/W'} & {img[d['platform']]} & {d['role']} & \\texttt{{{d.get('lo0', d.get('svi99', d.get('ip', '--')))}}} & "
@@ -121,8 +121,9 @@ excerpt("cfg_l2sec.txt", [block("DAD-ACC1", r"ip dhcp snooping vlan", stop_blank
 excerpt("cfg_dhcp.txt", [block("HCM-SRV1", r"ip dhcp pool HAN-V20"), block("HCM-SRV1", r"ip dhcp pool HCM-V70")])
 excerpt("cfg_ipsla.txt", [block("HCM-SRV1", r"ip sla 10$", stop_blank=False, max_lines=6)])
 excerpt("cfg_ipsec.txt", [block("HCM-EDG1", r"crypto ikev2 proposal", stop_blank=False, max_lines=22)])
-excerpt("cfg_evpn_leaf.txt", [block("DC-LEAF1", r"interface Vxlan1", lab="labB"),
-                              block("DC-LEAF1", r"router bgp", lab="labB", stop_blank=False, max_lines=36)[:-2]])
+excerpt("cfg_dc_leaf.txt", [block("DC-LEAF1", r"vrf definition TENANT-PROD", lab="labB"),
+                            block("DC-LEAF1", r"interface GigabitEthernet0/3$", lab="labB"),
+                            block("DC-LEAF1", r"router bgp", lab="labB", stop_blank=False, max_lines=27)])
 print("report assets written to report/generated/")
 
 # figures

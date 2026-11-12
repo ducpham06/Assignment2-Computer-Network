@@ -78,7 +78,7 @@ POOLS = [
     ("HCM", 80, "10.10.43.0/24", 120,  "Campus services (DHCP/DNS/NTP/WLC)"),
     ("HCM", 99, "10.10.44.0/24", 150,  "In-band device management"),
     ("HCM", 50, "10.10.48.0/20", 2000, "HQ IoT (cameras, badge readers, BMS)"),
-    ("HCM", "DC", "10.10.128.0/18", None, "Data-centre EVPN-VXLAN fabric (tenants, underlay, VTEPs)"),
+    ("HCM", "DC", "10.10.128.0/18", None, "Data-centre spine-leaf fabric (tenant subnets, underlay, loopbacks)"),
     ("HCM", "INFRA", "10.10.254.0/24", None, "Point-to-point links (/30)"),
     ("HCM", "LOOP", "10.10.255.0/24", None, "Router/switch loopbacks (/32)"),
     ("HAN", 20, "10.20.0.0/20",  3500, "R&D engineers, 16 x /24 access blocks"),
@@ -159,11 +159,11 @@ DEVICES = {
     "DAD-EDG1":  dict(platform="vios",   role="edge",   site="DAD", mgmt="172.16.99.31", lo0="10.30.255.1", isp="ISP-A", plane="A"),
     "DAD-EDG2":  dict(platform="vios",   role="edge",   site="DAD", mgmt="172.16.99.32", lo0="10.30.255.2", isp="ISP-B", plane="B"),
     "DAD-ACC1":  dict(platform="viosl2", role="access", site="DAD", mgmt="172.16.99.35", svi99="10.30.144.15"),
-    # Data-centre fabric part of the topology (Arista vEOS) -- lab="B" only groups the config files
-    "DC-SPINE1": dict(platform="veos", role="spine", site="HCM", mgmt="172.16.99.41", lo0="10.10.191.1", lab="B"),
-    "DC-SPINE2": dict(platform="veos", role="spine", site="HCM", mgmt="172.16.99.42", lo0="10.10.191.2", lab="B"),
-    "DC-LEAF1":  dict(platform="veos", role="leaf",  site="HCM", mgmt="172.16.99.43", lo0="10.10.191.11", vtep="10.10.191.21", lab="B"),
-    "DC-LEAF2":  dict(platform="veos", role="leaf",  site="HCM", mgmt="172.16.99.44", lo0="10.10.191.12", vtep="10.10.191.22", lab="B"),
+    # Data-centre fabric part of the topology (vIOS) -- lab="B" only groups the config files
+    "DC-SPINE1": dict(platform="vios", role="spine", site="HCM", mgmt="172.16.99.41", lo0="10.10.191.1", lab="B"),
+    "DC-SPINE2": dict(platform="vios", role="spine", site="HCM", mgmt="172.16.99.42", lo0="10.10.191.2", lab="B"),
+    "DC-LEAF1":  dict(platform="vios", role="leaf",  site="HCM", mgmt="172.16.99.43", lo0="10.10.191.11", lab="B"),
+    "DC-LEAF2":  dict(platform="vios", role="leaf",  site="HCM", mgmt="172.16.99.44", lo0="10.10.191.12", lab="B"),
 }
 for _d in DEVICES.values():
     _d.setdefault("lab", "A")
@@ -239,39 +239,42 @@ ACCESS_PORTS = [
 ]
 
 # --------------------------------------------------------------------------
-# DC fabric -- EVPN-VXLAN
+# DC fabric -- MPLS L3VPN on vIOS
 # --------------------------------------------------------------------------
 DC = dict(
+    # Lab fabric on vIOS: OSPF + LDP underlay, MP-BGP VPNv4 overlay (spines = route reflectors),
+    # one VRF per tenant on the leaves. (Production target: EVPN-VXLAN on hardware -- see report.)
     asn=65011,
-    vrf="TENANT-PROD", l3vni=50001,
-    anycast_mac="00:1c:73:00:dc:01",
-    vlans=[dict(vlan=110, name="DC_APP", vni=10110, v4="10.10.128.0/24"),
-           dict(vlan=120, name="DC_DB",  vni=10120, v4="10.10.129.0/24")],
-    # (spine, spine-if, leaf, leaf-if, /31)
+    vrf="TENANT-PROD",                      # the tenant that is routed to the campus
+    vrfs=[dict(name="TENANT-PROD", id=100, desc="production applications, reachable from the campus"),
+          dict(name="TENANT-DEV",  id=200, desc="development, isolated from PROD and the campus")],
+    # (spine, spine-if, leaf, leaf-if, /30)  spine = .1, leaf = .2
     fabric_links=[
-        ("DC-SPINE1", "Ethernet1", "DC-LEAF1", "Ethernet1", "10.10.190.0/31"),
-        ("DC-SPINE1", "Ethernet2", "DC-LEAF2", "Ethernet1", "10.10.190.2/31"),
-        ("DC-SPINE2", "Ethernet1", "DC-LEAF1", "Ethernet2", "10.10.190.4/31"),
-        ("DC-SPINE2", "Ethernet2", "DC-LEAF2", "Ethernet2", "10.10.190.6/31"),
+        ("DC-SPINE1", "Gi0/1", "DC-LEAF1", "Gi0/1", "10.10.190.0/30"),
+        ("DC-SPINE1", "Gi0/2", "DC-LEAF2", "Gi0/1", "10.10.190.4/30"),
+        ("DC-SPINE2", "Gi0/1", "DC-LEAF1", "Gi0/2", "10.10.190.8/30"),
+        ("DC-SPINE2", "Gi0/2", "DC-LEAF2", "Gi0/2", "10.10.190.12/30"),
     ],
-    hosts=[  # (leaf, leaf-if, host, vlan, ip)
-        ("DC-LEAF1", "Ethernet3", "DC-H1", 110, "10.10.128.11"),
-        ("DC-LEAF2", "Ethernet3", "DC-H2", 110, "10.10.128.12"),
-        ("DC-LEAF2", "Ethernet4", "DC-H3", 120, "10.10.129.13"),
+    # (leaf, leaf-if, host, vrf, subnet, host ip)  gateway = .1 of the subnet on the leaf
+    hosts=[
+        ("DC-LEAF1", "Gi0/3", "DC-H1", "TENANT-PROD", "10.10.128.0/24", "10.10.128.11"),
+        ("DC-LEAF2", "Gi0/3", "DC-H2", "TENANT-PROD", "10.10.129.0/24", "10.10.129.12"),
+        ("DC-LEAF1", "Gi0/4", "DC-H3", "TENANT-DEV",  "10.10.130.0/24", "10.10.130.13"),
+        ("DC-LEAF2", "Gi0/4", "DC-H4", "TENANT-DEV",  "10.10.131.0/24", "10.10.131.14"),
     ],
 )
 
 # Border links: campus core <-> DC leaf (routed, OSPF area 0; leaf side in the tenant VRF)
 # (core, core-if, leaf, leaf-if, /30)  core gets .1, leaf gets .2
 BORDER_LINKS = [
-    ("HCM-CORE1", "Gi1/2", "DC-LEAF1", "Ethernet5", "10.10.189.0/30"),
-    ("HCM-CORE2", "Gi1/2", "DC-LEAF2", "Ethernet5", "10.10.189.4/30"),
+    ("HCM-CORE1", "Gi1/2", "DC-LEAF1", "Gi0/5", "10.10.189.0/30"),
+    ("HCM-CORE2", "Gi1/2", "DC-LEAF2", "Gi0/5", "10.10.189.4/30"),
 ]
 
 # --------------------------------------------------------------------------
 # Lab sizing (EVE-NG RAM per template)
 # --------------------------------------------------------------------------
-RAM_MB = {"vios": 512, "viosl2": 768, "veos": 2048, "vpcs": 0}
+RAM_MB = {"vios": 512, "viosl2": 1024, "vpcs": 0}   # per the course setup guide
 
 # --------------------------------------------------------------------------
 # Small helpers used by every renderer

@@ -1,0 +1,41 @@
+vrf definition TENANT-PROD
+ description production applications, reachable from the campus
+ rd 10.10.191.11:100
+ address-family ipv4
+  route-target export 65011:100
+  route-target import 65011:100
+ exit-address-family
+!
+interface GigabitEthernet0/3
+ description Tenant TENANT-PROD gateway -> DC-H1 (10.10.128.11)
+ vrf forwarding TENANT-PROD
+ ip address 10.10.128.1 255.255.255.0
+ no shutdown
+!
+router bgp 65011
+ bgp router-id 10.10.191.11
+ bgp log-neighbor-changes
+ no bgp default ipv4-unicast
+ neighbor 10.10.191.1 remote-as 65011
+ neighbor 10.10.191.1 description iBGP VPNv4 DC-SPINE1
+ neighbor 10.10.191.1 update-source Loopback0
+ neighbor 10.10.191.2 remote-as 65011
+ neighbor 10.10.191.2 description iBGP VPNv4 DC-SPINE2
+ neighbor 10.10.191.2 update-source Loopback0
+ !
+ address-family vpnv4
+  neighbor 10.10.191.1 activate
+  neighbor 10.10.191.1 send-community extended
+  neighbor 10.10.191.2 activate
+  neighbor 10.10.191.2 send-community extended
+ exit-address-family
+ !
+ address-family ipv4 vrf TENANT-PROD
+  redistribute connected
+  maximum-paths ibgp 2
+  distance bgp 20 100 200
+ exit-address-family
+ !
+ address-family ipv4 vrf TENANT-DEV
+  redistribute connected
+  maximum-paths ibgp 2
