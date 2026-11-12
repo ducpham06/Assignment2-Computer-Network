@@ -15,7 +15,7 @@ L = ["# EVE-NG build guide", "",
      "Generated from `tools/sot.py` -- the cabling below is exactly what the configs expect.", "",
      "## 0. Host sizing", "",
      "Reference host: Intel Core Ultra 5 125H (14 cores / 18 threads), 32 GB RAM.", "",
-     "* Give the EVE-NG VM **24 GB RAM** and **12 vCPUs**; enable *Virtualize Intel VT-x/EPT* (nested virtualisation).",
+     "* The team's EVE-NG VM: **17.5 GB RAM** and **8 vCPUs** (any VM with 16 GB or more works); enable *Virtualize Intel VT-x/EPT* (nested virtualisation).",
      f"* The whole topology (campus/WAN + DC fabric) needs about {sum(sot.RAM_MB[d['platform']] for d in sot.DEVICES.values()) / 1024:.1f} GB "
      "of node RAM, so everything runs in **one** EVE-NG lab at the same time.",
      "* Plug the laptop into mains power and use the *Performance* power mode during the demo (the hybrid P/E cores throttle on battery).",

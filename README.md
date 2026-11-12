@@ -20,9 +20,10 @@ Design, configurations, automation and report for the TechViet Innovations three
 
 ## Host
 
-One EVE-NG topology, vIOS family only: 18 Cisco nodes (14 campus/WAN + 4 DC fabric) + 14 VPCS,
-about 11.5 GB of node RAM — runs on a 16 GB host; on the 32 GB reference laptop give the EVE-NG VM
-24 GB and 12 vCPUs. (`configs/labA` = campus/WAN, `configs/labB` = DC fabric; same lab.)
+One EVE-NG topology, vIOS family only: 18 Cisco nodes (14 campus/WAN + 4 DC fabric) + 15 VPCS
+(11 campus + 4 DC hosts), about 11.5 GB of node RAM. The team's EVE-NG VM has 17.5 GB RAM and
+8 vCPUs, which runs everything at once if nodes are started in batches; any VM with 16 GB or more works.
+(`configs/labA` = campus/WAN, `configs/labB` = DC fabric; same lab.)
 
 ## Regenerate everything after changing the design
 

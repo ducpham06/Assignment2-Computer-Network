@@ -6,7 +6,7 @@ Generated from `tools/sot.py` -- the cabling below is exactly what the configs e
 
 Reference host: Intel Core Ultra 5 125H (14 cores / 18 threads), 32 GB RAM.
 
-* Give the EVE-NG VM **24 GB RAM** and **12 vCPUs**; enable *Virtualize Intel VT-x/EPT* (nested virtualisation).
+* The team's EVE-NG VM: **17.5 GB RAM** and **8 vCPUs** (any VM with 16 GB or more works); enable *Virtualize Intel VT-x/EPT* (nested virtualisation).
 * The whole topology (campus/WAN + DC fabric) needs about 11.5 GB of node RAM, so everything runs in **one** EVE-NG lab at the same time.
 * Plug the laptop into mains power and use the *Performance* power mode during the demo (the hybrid P/E cores throttle on battery).
 * Start nodes in batches of 3-5: ISPs -> edges -> cores -> access -> server -> spines -> leaves -> VPCS.

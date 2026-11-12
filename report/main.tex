@@ -629,7 +629,7 @@ F5 & Stop node HAN-EDG1 & PC-HAN-ENG $\rightarrow$ PC-HCM-CORP & HAN-EDG2 takes 
 \subsection{Building the lab}
 The detailed EVE-NG procedure is in \texttt{docs/eve-ng-build-guide.md}; the essential steps are:
 \begin{enumerate}
-\item Extract the two image archives used by the team, \texttt{vios-adventerprisek9-m.SPA.159-3.M6.tgz} (routers) and \texttt{viosl2-adventerprisek9-m.ssa.high\_iron\_20200929.tgz} (switches), into \texttt{/opt/unetlab/addons/qemu/}, then run \texttt{unl\_wrapper -a fixpermissions}. Give the EVE-NG VM 24\,GB of RAM and 12 vCPUs with nested virtualisation enabled. Set vIOS nodes to 512\,MB and \textbf{6 Ethernet interfaces}, IOSvL2 to 1024\,MB with 4 interface groups.
+\item Extract the two image archives used by the team, \texttt{vios-adventerprisek9-m.SPA.159-3.M6.tgz} (routers) and \texttt{viosl2-adventerprisek9-m.ssa.high\_iron\_20200929.tgz} (switches), into \texttt{/opt/unetlab/addons/qemu/}, then run \texttt{unl\_wrapper -a fixpermissions}. The team's EVE-NG VM has 17.5\,GB of RAM and 8 vCPUs with nested virtualisation enabled. Set vIOS nodes to 512\,MB and \textbf{6 Ethernet interfaces}, IOSvL2 to 1024\,MB with 4 interface groups.
 \item Create the nodes and links exactly as in Figure~\ref{fig:physical} (the cabling table in the guide lists every port), and connect Gi0/0 of every node to a \emph{Management (Cloud0)} network.
 \item Start the nodes in the order carriers, edges, cores, access switches, server, VPCS; on each, enter \texttt{configure terminal} and paste \texttt{configs/labA/<node>.cfg}; then \texttt{write memory}. On VPCS, paste \texttt{configs/vpcs/<node>.vpc}.
 \item On the EVE-NG host add \texttt{172.16.99.1/24} to \texttt{pnet0}, install the automation requirements and run \texttt{tvi\_auto.py}.
